@@ -228,6 +228,13 @@ button {
   width: 90%;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  /* Allow overlay contents to scroll on smaller screens. Without a
+     max-height and overflow, long content like the joined player
+     list would push the modal beyond the viewport and prevent
+     scrolling. Setting a relative max-height keeps the modal within
+     view and makes it scrollable on mobile. */
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
 #team-names {
@@ -440,4 +447,35 @@ button.ghost {
 }
 button.ghost:hover {
   background: rgba(56, 111, 164, 0.1);
+}
+
+/* Styles for the joined players list on the host setup screen */
+#player-list {
+  /* Constrain the height of the joined players container and allow
+     vertical scrolling when there are many names. Increasing the
+     max-height slightly accommodates more names before scrolling.
+     Overflow-y ensures the list doesn't expand the modal off screen. */
+  max-height: 6rem;
+  overflow-y: auto;
+  margin-top: 0.5rem;
+}
+#players-ul {
+  display: flex;
+  flex-wrap: wrap;
+  /* Tight gap so player name tags pack more densely */
+  gap: 0.2rem;
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+#players-ul li {
+  /* Style each player name as a compact pill. Smaller font size and
+     reduced padding keep the pills narrow and allow more names per
+     row. White-space prevents names from wrapping across lines. */
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  color: #fff;
+  margin: 2px;
+  white-space: nowrap;
 }

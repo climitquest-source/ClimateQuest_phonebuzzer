@@ -168,7 +168,13 @@
                   if (window.teams && window.teams[teamIdx]) {
                     teamName = window.teams[teamIdx].name;
                   }
-                  li.textContent = `${p.name} — ${teamName}`;
+                  li.textContent = p.name;
+                  li.style.backgroundColor = window.teams && window.teams[teamIdx] ? window.teams[teamIdx].color : '#386fa4';
+                  li.style.color = '#fff';
+                  li.style.padding = '2px 6px';
+                  li.style.borderRadius = '4px';
+                  li.style.fontSize = '0.8rem';
+                  li.style.whiteSpace = 'nowrap';
                   ul.appendChild(li);
                 });
               });
