@@ -3,56 +3,182 @@
     {
       "name": "Waste Management",
       "questions": [
-        {"value": 200, "question": "What are three Rs for waste management?", "answer": "Reuse, Reduce and Recycle"},
-        {"value": 400, "question": "How does one dispose of batteries?", "answer": "City of Toronto’s Drop‑off Depots or drop off on a community environment day"},
-        {"value": 600, "question": "True or false: contaminated pizza boxes go in the green bin?", "answer": "True"},
-        {"value": 800, "question": "Which bin do coffee cups go in Toronto?", "answer": "Green bin"},
-        {"value": 1000, "question": "How should you deal with a small amount of used cooking oil?", "answer": "Wipe with kitchen towels and leave the kitchen towels in the green bin"}
+        {
+          "value": 200,
+          "question": "Name the three 'R's that summarize best practices for reducing waste.",
+          "answer": "Reuse, Reduce and Recycle",
+          "explanation": "The three 'R's encourage us to cut down on what we consume, find new uses for items we already have, and recycle materials to keep them out of landfill."
+        },
+        {
+          "value": 400,
+          "question": "In Toronto, where can you safely dispose of used household batteries?",
+          "answer": "City of Toronto’s Drop‑off Depots or drop off on a community environment day",
+          "explanation": "Batteries contain metals and chemicals that should not go in the trash. Toronto residents can drop them at city depots or during community environment days so they’re handled responsibly."
+        },
+        {
+          "value": 600,
+          "question": "In Toronto, where should a greasy pizza box that can’t be recycled be placed?",
+          "answer": "True",
+          "explanation": "Contaminated cardboard is not recyclable but it can be composted. In Toronto, pizza boxes with food residue go in the green bin (organics) rather than recycling."
+        },
+        {
+          "value": 800,
+          "question": "In Toronto’s waste system, which bin should disposable coffee cups go into?",
+          "answer": "Green bin",
+          "explanation": "Most paper coffee cups have a plastic lining that contaminates recycling. Toronto asks residents to put them in the green bin; the lid and sleeve go separately in recycling or garbage."
+        },
+        {
+          "value": 1000,
+          "question": "What’s the best way to dispose of a small amount of used cooking oil at home?",
+          "answer": "Wipe with kitchen towels and leave the kitchen towels in the green bin",
+          "explanation": "For small quantities, let the oil cool, soak it up with paper towel, and place it in the green bin. Larger amounts can be brought to a drop-off depot; pouring oil down the drain can clog pipes."
+        }
       ]
     },
     {
       "name": "Prepare for Climate Emergencies",
       "questions": [
-        {"value": 200, "question": "Climate Crisis comes as a result of Global…", "answer": "Warming"},
-        {"value": 400, "question": "Which climate emergency often leads to ‘cooling centres’ being opened in cities?", "answer": "Heatwaves"},
-        {"value": 600, "question": "What is the largest source of electricity generated in Ontario today?", "answer": "Nuclear"},
-        {"value": 800, "question": "What is the safest place to shelter during a tornado?", "answer": "A basement or an interior room on the lowest floor, away from windows."},
-        {"value": 1000, "question": "Where should the downspouts connect to?", "answer": "Disconnect to the city's sewer system; better at 2 metres away from the foundation"}
+        {
+          "value": 200,
+          "question": "The current climate crisis is primarily the result of global _________.",
+          "answer": "Warming",
+          "explanation": "Human activities have increased greenhouse‑gas concentrations in the atmosphere, trapping heat and driving global warming, which underlies the broader climate crisis."
+        },
+        {
+          "value": 400,
+          "question": "What type of extreme weather typically prompts cities to open ‘cooling centres’?",
+          "answer": "Heatwaves",
+          "explanation": "During prolonged periods of extreme heat, municipalities open public spaces with air conditioning so people without access to cool shelter can avoid heat‑related illness."
+        },
+        {
+          "value": 600,
+          "question": "What energy source currently provides the majority of Ontario’s electricity?",
+          "answer": "Nuclear",
+          "explanation": "Ontario relies heavily on nuclear power plants—particularly the Pickering and Bruce stations—to supply most of its electricity, with hydro, natural gas and renewables making up the balance."
+        },
+        {
+          "value": 800,
+          "question": "During a tornado, where is the safest place to take shelter?",
+          "answer": "A basement or an interior room on the lowest floor, away from windows.",
+          "explanation": "Going underground or into an interior space reduces the risk of flying debris. Staying away from windows and exterior walls helps protect you from broken glass and structural damage."
+        },
+        {
+          "value": 1000,
+          "question": "In stormwater management, where should your home’s downspouts drain?",
+          "answer": "Disconnect to the city's sewer system; better at 2 metres away from the foundation",
+          "explanation": "Downspouts should be disconnected from municipal sewers and directed at least two metres away from the foundation onto a permeable surface. This reduces flooding risk and eases pressure on the storm sewer system."
+        }
       ]
     },
     {
       "name": "Community Gardens",
       "questions": [
-        {"value": 200, "question": "What is the best way to have a sustainable source of food in your community?", "answer": "Community Gardens"},
-        {"value": 400, "question": "What is called to add food scraps and yard waste back into the soil to enrich gardens?", "answer": "Composting"},
-        {"value": 600, "question": "What are the most common vegetables that grow in Community Gardens in Toronto? Name three:", "answer": "Leafy greens like lettuce, kale, and swiss chard, as well as tomatoes, peppers, and beans. Root vegetables like beets and carrots are also popular choices. Additionally, cucumbers, squash, and zucchini are frequently cultivated"},
-        {"value": 800, "question": "Can you give some examples of Community Gardens in the City of Toronto?", "answer": "Wychwood Barns, MFRC Gardens, Eglinton Park Community Garden and the Rockcliffe Demonstration and Teaching Garden and Greenhouses. Other locations include Emmett Ave. Community Garden, New Horizons Community Garden, and Gate House Transformational Healing Garden."},
-        {"value": 1000, "question": "What would you do if you were to start a Community Garden?", "answer": "When considering a Community garden, key questions include site suitability (sunlight, soil, and space), resource availability (water, tools, and materials), and community engagement (participation, accessibility, and maintenance). Additionally, understanding the purpose of the garden (personal enjoyment, food production, or community building) and budgeting for its development are crucial"}
+        {
+          "value": 200,
+          "question": "What type of shared space can provide a sustainable food source for a neighbourhood?",
+          "answer": "Community Gardens",
+          "explanation": "Community gardens allow neighbours to grow produce together, increasing access to fresh food and strengthening local connections."
+        },
+        {
+          "value": 400,
+          "question": "What process adds kitchen scraps and yard waste back into the soil to enrich it?",
+          "answer": "Composting",
+          "explanation": "Composting breaks down organic matter into nutrient‑rich humus. Adding it to garden beds improves soil structure and fertility."
+        },
+        {
+          "value": 600,
+          "question": "Name three popular vegetables commonly grown in Toronto’s community gardens.",
+          "answer": "Leafy greens like lettuce, kale, and swiss chard, as well as tomatoes, peppers, and beans. Root vegetables like beets and carrots are also popular choices. Additionally, cucumbers, squash, and zucchini are frequently cultivated",
+          "explanation": "Cool‑season greens such as lettuce and kale thrive in Toronto’s climate, as do warm‑season crops like tomatoes and peppers. Root crops (beets, carrots) and vining plants (cucumbers, squash, zucchini) also do well."
+        },
+        {
+          "value": 800,
+          "question": "List some community garden locations in Toronto.",
+          "answer": "Wychwood Barns, MFRC Gardens, Eglinton Park Community Garden and the Rockcliffe Demonstration and Teaching Garden and Greenhouses. Other locations include Emmett Ave. Community Garden, New Horizons Community Garden, and Gate House Transformational Healing Garden.",
+          "explanation": "Toronto has dozens of community gardens across the city. These examples highlight the variety—from downtown sites like Wychwood Barns to neighbourhood gardens in Rockcliffe and Emmett Avenue."
+        },
+        {
+          "value": 1000,
+          "question": "What key considerations and steps should you take when starting a community garden?",
+          "answer": "When considering a Community garden, key questions include site suitability (sunlight, soil, and space), resource availability (water, tools, and materials), and community engagement (participation, accessibility, and maintenance). Additionally, understanding the purpose of the garden (personal enjoyment, food production, or community building) and budgeting for its development are crucial",
+          "explanation": "A successful community garden begins with choosing a sunny, accessible site with good soil and water. Engaging neighbours, agreeing on goals (food, education, community‑building) and sharing costs and maintenance responsibilities are also essential."
+        }
       ]
     },
     {
       "name": "Sustainability",
       "questions": [
-        {"value": 200, "question": "Urban gardens also support biodiversity by attracting these important pollinators.", "answer": "Bees"},
-        {"value": 400, "question": "Growing food locally reduces greenhouse gases which results in a lower:", "answer": "Carbon footprint"},
-        {"value": 600, "question": "What are the top 3 green commute options?", "answer": "Walking, biking, and using public transportation"},
-        {"value": 800, "question": "The UN created these 17 goals in 2015 to guide global efforts toward a more sustainable future.", "answer": "Sustainable Development Goals (SDGs)"},
-        {"value": 1000, "question": "What type of economy focuses on designing out waste and keeping products and materials in use?", "answer": "Circular Economy"}
+        {
+          "value": 200,
+          "question": "Urban gardens support biodiversity by attracting which vital pollinators?",
+          "answer": "Bees",
+          "explanation": "Flowers in community and rooftop gardens provide nectar and pollen for bees. These pollinators are essential to many crops and wild plants."
+        },
+        {
+          "value": 400,
+          "question": "Growing food locally reduces greenhouse‑gas emissions and therefore lowers your ______.",
+          "answer": "Carbon footprint",
+          "explanation": "Transporting food long distances uses fossil fuels for trucking, shipping and refrigeration. Eating food grown nearby reduces those emissions."
+        },
+        {
+          "value": 600,
+          "question": "Name three environmentally friendly ways to commute.",
+          "answer": "Walking, biking, and using public transportation",
+          "explanation": "Active travel (walking or biking) produces no emissions. Public transit moves many people efficiently, reducing per‑person fuel use compared to private cars."
+        },
+        {
+          "value": 800,
+          "question": "What collective name do the UN’s 17 goals, adopted in 2015, go by?",
+          "answer": "Sustainable Development Goals (SDGs)",
+          "explanation": "The Sustainable Development Goals lay out targets for poverty reduction, health, education, climate action and more. They provide a roadmap for global sustainability through 2030."
+        },
+        {
+          "value": 1000,
+          "question": "What economic model aims to eliminate waste by keeping resources in use through reuse, repair and recycling?",
+          "answer": "Circular Economy",
+          "explanation": "A circular economy designs products and systems to reuse materials and regenerate natural systems, rather than extracting resources, using them once and discarding them."
+        }
       ]
     },
     {
       "name": "Food Security",
       "questions": [
-        {"value": 200, "question": "True/False: Food Security entails that people don’t have access to affordable food sources?", "answer": "False"},
-        {"value": 400, "question": "What is the difference between ‘food insecurity’ and ‘hunger’?", "answer": "Food insecurity is the lack of reliable access to sufficient, affordable, nutritious food; hunger is the physical sensation of not having enough food."},
-        {"value": 600, "question": "What is Food Security?", "answer": "Food security is defined as a situation that exists when all people, at all times, have physical, social and economic access to sufficient, safe and nutritious food that meets their dietary needs and food preferences for an active and healthy life."},
-        {"value": 800, "question": "Which areas have potential food security challenges?", "answer": "Inner City Suburbs, particularly Priority Investment Neighbourhoods (PINs)"},
-        {"value": 1000, "question": "Which groups in the city are most prone to being food insecure?", "answer": "The risk of food insecurity is higher for individuals and families that are racialized (especially Black people), are Indigenous, are part of the 2SLGBTQIA+ community, have a low income, receive social assistance such as Ontario Works or Ontario Disability Support Program, live with a disability, rent their home, live in households led by lone parents (especially female lone parents), or are new to Canada."}
+        {
+          "value": 200,
+          "question": "True or False: Food security means people lack access to affordable food.",
+          "answer": "False",
+          "explanation": "Food security is the opposite: it means everyone has reliable access to sufficient, safe and nutritious food. Food insecurity is when those conditions are not met."
+        },
+        {
+          "value": 400,
+          "question": "How does food insecurity differ from hunger?",
+          "answer": "Food insecurity is the lack of reliable access to sufficient, affordable, nutritious food; hunger is the physical sensation of not having enough food.",
+          "explanation": "Food insecurity describes a social and economic condition; hunger is a physical feeling. People can experience food insecurity without feeling hungry every day if they sacrifice quality or variety."
+        },
+        {
+          "value": 600,
+          "question": "How does the United Nations define food security?",
+          "answer": "Food security is defined as a situation that exists when all people, at all times, have physical, social and economic access to sufficient, safe and nutritious food that meets their dietary needs and food preferences for an active and healthy life.",
+          "explanation": "This definition emphasises access (physical, social, economic), adequacy (sufficient, safe, nutritious) and preference. It highlights that food security is multidimensional, not just about calories."
+        },
+        {
+          "value": 800,
+          "question": "Which parts of Toronto face the greatest potential challenges in accessing food?",
+          "answer": "Inner City Suburbs, particularly Priority Investment Neighbourhoods (PINs)",
+          "explanation": "Areas with fewer grocery stores, limited public transit and higher poverty rates—often the outer suburbs and designated PINs—can experience food deserts or high prices, affecting food access."
+        },
+        {
+          "value": 1000,
+          "question": "Which groups in Toronto are most at risk of food insecurity?",
+          "answer": "The risk of food insecurity is higher for individuals and families that are racialized (especially Black people), are Indigenous, are part of the 2SLGBTQIA+ community, have a low income, receive social assistance such as Ontario Works or Ontario Disability Support Program, live with a disability, rent their home, live in households led by lone parents (especially female lone parents), or are new to Canada.",
+          "explanation": "Structural inequalities make certain groups more vulnerable. Systemic racism, discrimination, income disparity, disability and newcomer status all contribute to difficulties securing adequate food."
+        }
       ]
     }
   ],
   "final_question": {
-    "question": "This Canadian program, started in 2019, aims to reduce household food insecurity by improving access to healthy food for school‑aged children.",
-    "answer": "What is the Canada Food Policy / School Food Program?"
+    "question": "Which Canadian program launched in 2019 seeks to reduce household food insecurity by improving access to nutritious food for school‑aged children?",
+    "answer": "What is the Canada Food Policy / School Food Program?",
+    "explanation": "Canada’s Food Policy proposes a national school food program to ensure children receive healthy meals at school. It aims to reduce food insecurity and promote better learning and health outcomes."
   }
 }
