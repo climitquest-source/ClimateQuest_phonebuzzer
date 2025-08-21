@@ -119,6 +119,22 @@
       const btn = document.getElementById('create-room-btn');
       if (btn) {
         btn.addEventListener('click', async () => {
+          // Populate teams if Start Game hasn't been pressed yet. This ensures
+          // players can choose their team when joining via phone buzzers.
+          if (!window.teams || window.teams.length === 0) {
+            const countSel = document.getElementById('team-count');
+            const count = countSel ? parseInt(countSel.value) : 0;
+            window.teams = [];
+            for (let i = 0; i < count; i++) {
+              const input = document.getElementById(`team-name-${i}`);
+              const name = input && input.value ? input.value.trim() : '';
+              const defaultColours = ['#2d6a4f', '#386fa4', '#e9c46a', '#e76f51'];
+              const defaultNames   = ['Green', 'Blue', 'Yellow', 'Red'];
+              const colour = defaultColours[i] || '#386fa4';
+              const teamName = name || defaultNames[i] || `Team ${i + 1}`;
+              window.teams.push({ name: teamName, color: colour, score: 0 });
+            }
+          }
           if (window.phones && typeof window.phones.createRoom === 'function') {
             await window.phones.createRoom();
           }
