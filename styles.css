@@ -163,8 +163,11 @@ main {
 }
 
 .team-button.selected {
-  outline: 3px solid rgba(0, 0, 0, 0.5);
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+  /* When a team is selected (e.g. a player buzzes in), make the button
+     stand out with a bold black outline. A thicker border improves
+     visibility compared to the previous grey outline. */
+  outline: 5px solid #000;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
 }
 
 button {
