@@ -47,6 +47,13 @@ main {
   border-left: 6px solid currentColor;
 }
 
+/* Highlight the team card when that team buzzes in. We use a bold black
+   outline to stand out clearly against the light card background. */
+.team-card.highlight {
+  outline: 4px solid #000;
+  outline-offset: 0;
+}
+
 .team-name {
   font-weight: bold;
   margin-bottom: 0.25rem;

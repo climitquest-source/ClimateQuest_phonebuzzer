@@ -354,6 +354,8 @@ function openQuestion(category, questionObj, cellEl) {
       selectedTeamIdx = idx;
       document.querySelectorAll('.team-button').forEach(el => el.classList.remove('selected'));
       btn.classList.add('selected');
+      // Highlight the corresponding scoreboard card for this team
+      highlightScoreboard(idx);
     });
     teamSelect.appendChild(btn);
   });
@@ -368,6 +370,23 @@ function openQuestion(category, questionObj, cellEl) {
   // This sets buzzersOpen flag and allows remote players to buzz once.
   if (window.phones && typeof window.phones.openRemote === 'function') {
     window.phones.openRemote();
+  }
+}
+
+// Highlight or clear highlight for scoreboard cards. Passing a negative index
+// clears all highlights. This helps players see which team buzzed first.
+function highlightScoreboard(index) {
+  const cards = document.querySelectorAll('.team-card');
+  cards.forEach(card => {
+    card.classList.remove('highlight');
+    // Remove any inline border colour set previously
+    card.style.outlineColor = '';
+  });
+  if (typeof index === 'number' && index >= 0) {
+    const card = document.querySelector(`.team-card[data-team-index="${index}"]`);
+    if (card) {
+      card.classList.add('highlight');
+    }
   }
 }
 
@@ -406,6 +425,8 @@ function setupModalHandlers() {
     document.querySelectorAll('#team-select .team-button').forEach(btn => {
       btn.classList.remove('selected');
     });
+    // Clear any scoreboard highlights
+    highlightScoreboard(-1);
     // If phone buzzers are enabled, re‑open remote buzzing so another team can buzz in.
     if (window.phones && typeof window.phones.openRemote === 'function') {
       window.phones.openRemote();
@@ -445,6 +466,9 @@ function finishQuestion(markUsed = true) {
   document.getElementById('modal').classList.add('hidden');
   // Always re-enable show answer button for next question
   document.getElementById('show-answer').disabled = false;
+
+  // Remove scoreboard highlight when finishing the question
+  highlightScoreboard(-1);
 
   // If phone buzzers are enabled, close remote buzzers after question finishes.
   if (window.phones && typeof window.phones.closeRemote === 'function') {
