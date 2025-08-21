@@ -35,52 +35,58 @@
     </section>
   </main>
 
-  <!-- Setup Modal: choose number of teams and names -->
+  <!-- Setup Modal: multi-step wizard for teams and buzzers -->
   <div id="setup-modal" class="setup-overlay">
     <div class="setup-content">
-      <h2>Game Setup</h2>
-      <p>Select the number of teams and enter their names.</p>
-      <label for="team-count">Number of teams:</label>
-      <select id="team-count">
-        <option value="2">2 Teams</option>
-        <option value="3">3 Teams</option>
-        <option value="4">4 Teams</option>
-      </select>
-      <div id="team-names"></div>
-      <button id="start-game-btn">Start Game</button>
-
-      <!-- Phone buzzer setup section: primary buzzing method -->
-      <div class="phone-section">
-        <h3>Phone Buzzers (Primary)</h3>
+      <!-- Step 1: Teams -->
+      <div id="team-step">
+        <h2>Game Setup</h2>
+        <p>Select the number of teams and enter their names.</p>
+        <label for="team-count">Number of teams:</label>
+        <select id="team-count">
+          <option value="2">2 Teams</option>
+          <option value="3">3 Teams</option>
+          <option value="4">4 Teams</option>
+        </select>
+        <div id="team-names"></div>
+        <button id="to-phone-step" class="primary">Next: Buzzers</button>
+      </div>
+      <!-- Step 2: Buzzers and join list -->
+      <div id="phone-step" style="display:none;">
+        <h2>Phone Buzzers</h2>
         <p>
-          Let your teams buzz with their phones. Click the button below to create a room code and display a join link and QR. Share these with players so they can join via their phones.
+          Let your teams buzz with their phones. Click the button below to create a room code and display a join link and QR. Share these with players so they can join via their phones. A live list of joined players will appear below.
         </p>
-        <button id="create-room-btn">Enable Phone Buzzers</button>
+        <button id="create-room-btn" class="primary">Enable Phone Buzzers</button>
         <div id="phone-room-info" style="display:none; margin-top:0.75rem;">
           <p><strong>Room code:</strong> <span id="phone-room-code">—</span></p>
           <!-- Real QR image will be inserted by phones.js -->
           <img id="phone-qr" width="180" height="180" alt="Room QR code" />
           <p><strong>Join URL:</strong> <span id="join-url"></span></p>
         </div>
-      </div>
-
-      <!-- Buzzer instructions and print link: manual coloured cards as a backup option -->
-      <div class="buzzer-info">
-        <h3>Backup Colour Cards</h3>
-        <p>
-          As a fallback, each team can have a coloured card matching their team colour. The first team to raise their card gets to answer. Below are small previews of the coloured BUZZ cards.
-        </p>
-        <!-- Preview of the printable buzzers. These small cards show the colour and "BUZZ" text to help hosts understand what to print. -->
-        <div class="buzzer-preview-container">
-          <div class="buzzer-preview green">BUZZ</div>
-          <div class="buzzer-preview blue">BUZZ</div>
-          <div class="buzzer-preview yellow">BUZZ</div>
-          <div class="buzzer-preview red">BUZZ</div>
+        <!-- Joined players list -->
+        <div id="player-list" style="display:none; margin-top:0.75rem;">
+          <h3>Joined players</h3>
+          <ul id="players-ul"></ul>
         </div>
-        <p>
-          You can print full‑size coloured “BUZZ” cards for each team before hosting. These cards are larger postcard‑sized versions of the previews shown above.
-          <a href="buzzers.html" target="_blank">Open printable buzzer cards</a>
-        </p>
+        <!-- Backup colour cards: optional fallback -->
+        <div class="buzzer-info" style="margin-top:1rem;">
+          <h3>Backup Colour Cards</h3>
+          <p>
+            As a fallback, each team can have a coloured card matching their team colour. The first team to raise their card gets to answer. Below are small previews of the coloured BUZZ cards.
+          </p>
+          <div class="buzzer-preview-container">
+            <div class="buzzer-preview green">BUZZ</div>
+            <div class="buzzer-preview blue">BUZZ</div>
+            <div class="buzzer-preview yellow">BUZZ</div>
+            <div class="buzzer-preview red">BUZZ</div>
+          </div>
+          <p>
+            You can print full‑size coloured “BUZZ” cards for each team before hosting. These cards are larger postcard‑sized versions of the previews shown above.
+            <a href="buzzers.html" target="_blank">Open printable buzzer cards</a>
+          </p>
+        </div>
+        <button id="start-game-btn" class="primary" style="margin-top:1rem;">Start Game</button>
       </div>
     </div>
   </div>
@@ -147,6 +153,30 @@
           }
           if (window.phones && typeof window.phones.createRoom === 'function') {
             await window.phones.createRoom();
+            // After room creation, subscribe to player list updates so the host
+            // can see who has joined in real time. The callback receives
+            // an object keyed by userId, with fields {name, team, joined}.
+            if (typeof window.phones.onPlayerListUpdate === 'function') {
+              window.phones.onPlayerListUpdate((players) => {
+                const listDiv = document.getElementById('player-list');
+                const ul = document.getElementById('players-ul');
+                if (!listDiv || !ul) return;
+                // Show the list container once there is data
+                listDiv.style.display = 'block';
+                ul.innerHTML = '';
+                // players is an object {userId: {name, team, joined}}
+                Object.values(players).forEach((p) => {
+                  const li = document.createElement('li');
+                  const teamIdx = typeof p.team === 'number' ? p.team : 0;
+                  let teamName = '';
+                  if (window.teams && window.teams[teamIdx]) {
+                    teamName = window.teams[teamIdx].name;
+                  }
+                  li.textContent = `${p.name} — ${teamName}`;
+                  ul.appendChild(li);
+                });
+              });
+            }
           }
         });
       }

@@ -33,52 +33,58 @@
     </section>
   </main>
 
-  <!-- Setup Modal: choose number of teams and names -->
+  <!-- Setup Modal: multi-step wizard for teams and buzzers -->
   <div id="setup-modal" class="setup-overlay">
     <div class="setup-content">
-      <h2>Game Setup</h2>
-      <p>Select the number of teams and enter their names.</p>
-      <label for="team-count">Number of teams:</label>
-      <select id="team-count">
-        <option value="2">2 Teams</option>
-        <option value="3">3 Teams</option>
-        <option value="4">4 Teams</option>
-      </select>
-      <div id="team-names"></div>
-      <button id="start-game-btn">Start Game</button>
-
-      <!-- Phone buzzer setup section: primary buzzing method -->
-      <div class="phone-section">
-        <h3>Phone Buzzers (Primary)</h3>
+      <!-- Step 1: Teams -->
+      <div id="team-step">
+        <h2>Game Setup</h2>
+        <p>Select the number of teams and enter their names.</p>
+        <label for="team-count">Number of teams:</label>
+        <select id="team-count">
+          <option value="2">2 Teams</option>
+          <option value="3">3 Teams</option>
+          <option value="4">4 Teams</option>
+        </select>
+        <div id="team-names"></div>
+        <button id="to-phone-step" class="primary">Next: Buzzers</button>
+      </div>
+      <!-- Step 2: Buzzers and join list -->
+      <div id="phone-step" style="display:none;">
+        <h2>Phone Buzzers</h2>
         <p>
-          Let your teams buzz with their phones. Click the button below to create a room code and display a join link and QR. Share these with players so they can join via their phones.
+          Let your teams buzz with their phones. Click the button below to create a room code and display a join link and QR. Share these with players so they can join via their phones. A live list of joined players will appear below.
         </p>
-        <button id="create-room-btn">Enable Phone Buzzers</button>
+        <button id="create-room-btn" class="primary">Enable Phone Buzzers</button>
         <div id="phone-room-info" style="display:none; margin-top:0.75rem;">
           <p><strong>Room code:</strong> <span id="phone-room-code">—</span></p>
           <!-- Real QR image will be inserted by phones.js -->
           <img id="phone-qr" width="180" height="180" alt="Room QR code" />
           <p><strong>Join URL:</strong> <span id="join-url"></span></p>
         </div>
-      </div>
-
-      <!-- Manual buzzer instructions: backup coloured cards -->
-      <div class="buzzer-info">
-        <h3>Backup Colour Cards</h3>
-        <p>
-          As a fallback, each team can have a coloured card matching their team colour. The first team to raise their card gets to answer. Below are small previews of the coloured BUZZ cards.
-        </p>
-        <!-- Preview of printable buzzers: show small coloured cards with BUZZ text -->
-        <div class="buzzer-preview-container">
-          <div class="buzzer-preview green">BUZZ</div>
-          <div class="buzzer-preview blue">BUZZ</div>
-          <div class="buzzer-preview yellow">BUZZ</div>
-          <div class="buzzer-preview red">BUZZ</div>
+        <!-- Joined players list -->
+        <div id="player-list" style="display:none; margin-top:0.75rem;">
+          <h3>Joined players</h3>
+          <ul id="players-ul"></ul>
         </div>
-        <p>
-          You can print full‑size coloured “BUZZ” cards for each team before hosting. These cards are larger postcard‑sized versions of the previews shown above.
-          <a href="buzzers.html" target="_blank">Open printable buzzer cards</a>
-        </p>
+        <!-- Backup colour cards: optional fallback -->
+        <div class="buzzer-info" style="margin-top:1rem;">
+          <h3>Backup Colour Cards</h3>
+          <p>
+            As a fallback, each team can have a coloured card matching their team colour. The first team to raise their card gets to answer. Below are small previews of the coloured BUZZ cards.
+          </p>
+          <div class="buzzer-preview-container">
+            <div class="buzzer-preview green">BUZZ</div>
+            <div class="buzzer-preview blue">BUZZ</div>
+            <div class="buzzer-preview yellow">BUZZ</div>
+            <div class="buzzer-preview red">BUZZ</div>
+          </div>
+          <p>
+            You can print full‑size coloured “BUZZ” cards for each team before hosting. These cards are larger postcard‑sized versions of the previews shown above.
+            <a href="buzzers.html" target="_blank">Open printable buzzer cards</a>
+          </p>
+        </div>
+        <button id="start-game-btn" class="primary" style="margin-top:1rem;">Start Game</button>
       </div>
     </div>
   </div>
@@ -116,21 +122,30 @@
   <script src="phones.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      // Handler for Next button: move from team selection to phone step
+      const nextBtn = document.getElementById('to-phone-step');
+      if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+          const teamStep = document.getElementById('team-step');
+          const phoneStep = document.getElementById('phone-step');
+          if (teamStep) teamStep.style.display = 'none';
+          if (phoneStep) phoneStep.style.display = 'block';
+        });
+      }
+      // Handler for enabling phone buzzers
       const btn = document.getElementById('create-room-btn');
       if (btn) {
         btn.addEventListener('click', async () => {
           // Always gather the current team names and colours before creating
-          // a phone room. This ensures the remote team list matches whatever
-          // the host has selected, even if a previous game created window.teams.
           {
             const countSel = document.getElementById('team-count');
             const count = countSel ? parseInt(countSel.value) : 0;
             window.teams = [];
+            const defaultColours = ['#2d6a4f', '#386fa4', '#e9c46a', '#e76f51'];
+            const defaultNames   = ['Green', 'Blue', 'Yellow', 'Red'];
             for (let i = 0; i < count; i++) {
               const input = document.getElementById(`team-name-${i}`);
               const name = input && input.value ? input.value.trim() : '';
-              const defaultColours = ['#2d6a4f', '#386fa4', '#e9c46a', '#e76f51'];
-              const defaultNames   = ['Green', 'Blue', 'Yellow', 'Red'];
               const colour = defaultColours[i] || '#386fa4';
               const teamName = name || defaultNames[i] || `Team ${i + 1}`;
               window.teams.push({ name: teamName, color: colour, score: 0 });
@@ -138,7 +153,49 @@
           }
           if (window.phones && typeof window.phones.createRoom === 'function') {
             await window.phones.createRoom();
+            // Subscribe to player list updates to show joined users
+            if (typeof window.phones.onPlayerListUpdate === 'function') {
+              window.phones.onPlayerListUpdate((players) => {
+                const listDiv = document.getElementById('player-list');
+                const ul = document.getElementById('players-ul');
+                if (!listDiv || !ul) return;
+                listDiv.style.display = 'block';
+                ul.innerHTML = '';
+                Object.values(players).forEach((p) => {
+                  const li = document.createElement('li');
+                  const teamIdx = typeof p.team === 'number' ? p.team : 0;
+                  let teamName = '';
+                  if (window.teams && window.teams[teamIdx]) {
+                    teamName = window.teams[teamIdx].name;
+                  }
+                  li.textContent = `${p.name} — ${teamName}`;
+                  ul.appendChild(li);
+                });
+              });
+            }
           }
+        });
+      }
+      // Start the game from step 2
+      const startBtn = document.getElementById('start-game-btn');
+      if (startBtn) {
+        startBtn.addEventListener('click', () => {
+          const countSel = document.getElementById('team-count');
+          const count = countSel ? parseInt(countSel.value) : 0;
+          teams = [];
+          for (let i = 0; i < count; i++) {
+            const input = document.getElementById(`team-name-${i}`);
+            const name = input && input.value ? input.value.trim() : COLOUR_OPTIONS[i].defaultName;
+            const { color } = COLOUR_OPTIONS[i];
+            teams.push({ name, color, score: 0 });
+          }
+          window.teams = teams;
+          buildScoreboard();
+          buildBoard();
+          const overlay = document.getElementById('setup-modal');
+          if (overlay) overlay.style.display = 'none';
+          const instructions = document.getElementById('instructions');
+          if (instructions) instructions.style.display = 'block';
         });
       }
     });

@@ -12,6 +12,7 @@
   let roomRef = null;
   let openRef = null;
   let pressesRef = null;
+  let playersRef = null;
   // Fetch the configuration JSON only once
   async function loadConfig() {
     if (window._phoneCfg) return window._phoneCfg;
@@ -69,6 +70,7 @@
     // Set child references for later use
     openRef = roomRef.child('open');
     pressesRef = roomRef.child('presses');
+    playersRef = roomRef.child('players');
     // Update the UI with code, URL and QR
     const codeSpan = document.getElementById('phone-room-code');
     const urlSpan  = document.getElementById('join-url');
@@ -116,10 +118,23 @@
       pressesRef.off('child_added');
     }
   }
+
+  // Subscribe to player list updates. The provided callback is invoked
+  // whenever the list of players in the current room changes. The callback
+  // receives a plain object mapping userId to player info (name, team index).
+  function onPlayerListUpdate(callback) {
+    // If no room or playersRef is defined yet, nothing to subscribe to
+    if (!playersRef || typeof callback !== 'function') return;
+    // Listen to value events and forward snapshot value to callback
+    playersRef.on('value', (snap) => {
+      callback(snap.val() || {});
+    });
+  }
   // Expose API on the window for use in app.js and index.html
   window.phones = {
     createRoom,
     openRemote,
     closeRemote
+    ,onPlayerListUpdate
   };
 })();

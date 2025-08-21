@@ -217,6 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function setupTeamForm() {
   const teamCountSelect = document.getElementById('team-count');
   const teamNamesContainer = document.getElementById('team-names');
+  const toPhoneBtn = document.getElementById('to-phone-step');
   const startGameBtn = document.getElementById('start-game-btn');
 
   // Helper to build input boxes according to the selected team count
@@ -243,7 +244,18 @@ function setupTeamForm() {
     buildNameInputs(count);
   });
 
-  // Start the game: gather names/colours and construct the UI
+  // Transition from team setup to phone setup
+  if (toPhoneBtn) {
+    toPhoneBtn.addEventListener('click', () => {
+      // Hide the team step and show the phone step
+      const teamStep = document.getElementById('team-step');
+      const phoneStep = document.getElementById('phone-step');
+      if (teamStep) teamStep.style.display = 'none';
+      if (phoneStep) phoneStep.style.display = 'block';
+    });
+  }
+
+  // Start the game: gather names/colours, build UI and hide overlay
   startGameBtn.addEventListener('click', () => {
     const count = parseInt(teamCountSelect.value);
     teams = [];
@@ -253,16 +265,14 @@ function setupTeamForm() {
       const { color } = COLOUR_OPTIONS[i];
       teams.push({ name, color, score: 0 });
     }
-    // Expose teams on the window so phones.js can read them when creating
-    // a remote buzzer room. Without this, window.teams would be undefined.
     window.teams = teams;
-    // Build the scoreboard and board
+    // Build scoreboard and board
     buildScoreboard();
     buildBoard();
     // Hide the setup overlay
     const overlay = document.getElementById('setup-modal');
     if (overlay) overlay.style.display = 'none';
-    // Show the instructions section if present
+    // Show instructions section if present
     const instructions = document.getElementById('instructions');
     if (instructions) instructions.style.display = 'block';
   });
