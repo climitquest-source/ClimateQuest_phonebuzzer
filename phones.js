@@ -79,12 +79,15 @@
       const basePath = window.location.pathname.replace(/index\.html$/, '');
       const joinUrl = window.location.origin + basePath + 'buzzer.html#' + code;
       urlSpan.textContent = joinUrl;
-      // Draw placeholder QR
-      const canvas = document.getElementById('phone-qr');
-      if (canvas && typeof drawFakeQR === 'function') {
-        drawFakeQR(canvas, joinUrl);
-      }
-      infoDiv.style.display = 'block';
+          // Generate a real QR code image using a public API. We don't rely
+          // on drawFakeQR here so players can scan the code directly.
+          const qrEl = document.getElementById('phone-qr');
+          if (qrEl) {
+            qrEl.src =
+              'https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=' +
+              encodeURIComponent(joinUrl);
+          }
+          infoDiv.style.display = 'block';
     }
     return code;
   }
