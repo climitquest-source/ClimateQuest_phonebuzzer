@@ -390,8 +390,17 @@ function setupModalHandlers() {
     }
   });
   wrongBtn.addEventListener('click', () => {
-    // On wrong answer, just close the modal without marking the cell used
-    finishQuestion(false);
+    // On wrong answer, keep the question open and allow other teams to buzz.
+    // Reset the selected team and remove highlights.
+    selectedTeamIdx = null;
+    document.querySelectorAll('#team-select .team-button').forEach(btn => {
+      btn.classList.remove('selected');
+    });
+    // If phone buzzers are enabled, re‑open remote buzzing so another team can buzz in.
+    if (window.phones && typeof window.phones.openRemote === 'function') {
+      window.phones.openRemote();
+    }
+    // Do not close the modal or mark the cell; host may select another team.
   });
   burnoutBtn.addEventListener('click', () => {
     // Burnout: mark the tile as used without awarding any points
