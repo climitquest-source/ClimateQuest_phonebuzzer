@@ -49,14 +49,27 @@
       <div id="team-names"></div>
       <button id="start-game-btn">Start Game</button>
 
-      <!-- Buzzer instructions and print link on setup page -->
-      <div class="buzzer-info">
-        <h3>Prepare Your Buzzers</h3>
+      <!-- Phone buzzer setup section: primary buzzing method -->
+      <div class="phone-section">
+        <h3>Phone Buzzers (Primary)</h3>
         <p>
-          For manual buzzing, each team should have a coloured card matching their team colour. The first team to raise their card gets to answer. Below are small previews of the BUZZ cards for each colour.
+          Let your teams buzz with their phones. Click the button below to create a room code and display a join link and QR. Share these with players so they can join via their phones.
         </p>
-        <!-- Preview of the printable buzzers. These small cards show the colour and
-             "BUZZ" text to help hosts understand what to print. -->
+        <button id="create-room-btn">Enable Phone Buzzers</button>
+        <div id="phone-room-info" style="display:none; margin-top:0.75rem;">
+          <p><strong>Room code:</strong> <span id="phone-room-code">—</span></p>
+          <canvas id="phone-qr" width="180" height="180"></canvas>
+          <p><strong>Join URL:</strong> <span id="join-url"></span></p>
+        </div>
+      </div>
+
+      <!-- Buzzer instructions and print link: manual coloured cards as a backup option -->
+      <div class="buzzer-info">
+        <h3>Backup Colour Cards</h3>
+        <p>
+          As a fallback, each team can have a coloured card matching their team colour. The first team to raise their card gets to answer. Below are small previews of the coloured BUZZ cards.
+        </p>
+        <!-- Preview of the printable buzzers. These small cards show the colour and "BUZZ" text to help hosts understand what to print. -->
         <div class="buzzer-preview-container">
           <div class="buzzer-preview green">BUZZ</div>
           <div class="buzzer-preview blue">BUZZ</div>
@@ -67,23 +80,6 @@
           You can print full‑size coloured “BUZZ” cards for each team before hosting. These cards are larger postcard‑sized versions of the previews shown above.
           <a href="buzzers.html" target="_blank">Open printable buzzer cards</a>
         </p>
-      </div>
-
-      <!-- Optional phone buzzer setup -->
-      <div class="phone-section">
-        <h3>Phone Buzzers (optional)</h3>
-        <p>
-          To let players use their phones as buzzers, click the button below. This
-          will create a room code and show a join URL and QR. Share these with
-          players so they can join via their phones. If you prefer to use
-          coloured cards, you can ignore this section.
-        </p>
-        <button id="create-room-btn">Enable Phone Buzzers</button>
-        <div id="phone-room-info" style="display:none; margin-top:0.75rem;">
-          <p><strong>Room code:</strong> <span id="phone-room-code">—</span></p>
-          <canvas id="phone-qr" width="180" height="180"></canvas>
-          <p><strong>Join URL:</strong> <span id="join-url"></span></p>
-        </div>
       </div>
     </div>
   </div>
@@ -118,7 +114,9 @@
   <!-- Firebase SDKs for phone buzzer functionality -->
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
-  <!-- Placeholder QR renderer -->
+  <!-- Include auth so anonymous sign‑in works if rules require it -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <!-- Placeholder QR renderer (draws a stylised QR and join URL) -->
   <script src="assets/qr-min.js"></script>
   <!-- Host-side phone integration -->
   <script src="phones.js"></script>

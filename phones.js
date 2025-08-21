@@ -27,6 +27,17 @@
     const cfg = await loadConfig();
     fbApp = firebase.initializeApp(cfg, 'hostApp');
     db = firebase.database(fbApp);
+    // Sign in anonymously so Realtime Database reads/writes are allowed on
+    // projects where auth is required. This will no‑op on projects where
+    // rules do not require authentication.
+    try {
+      // For named app, get the auth instance and sign in
+      const auth = firebase.auth(fbApp);
+      await auth.signInAnonymously();
+    } catch (e) {
+      // Ignore errors (for example if auth is not enabled or not required)
+      console.warn('Anon auth failed (host)', e);
+    }
   }
   // Generate a random 6‑character room code from uppercase letters/digits
   function genCode() {

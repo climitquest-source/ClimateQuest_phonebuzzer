@@ -47,11 +47,25 @@
       <div id="team-names"></div>
       <button id="start-game-btn">Start Game</button>
 
-      <!-- Buzzer instructions and print link on setup page -->
-      <div class="buzzer-info">
-        <h3>Prepare Your Buzzers</h3>
+      <!-- Phone buzzer setup section: primary buzzing method -->
+      <div class="phone-section">
+        <h3>Phone Buzzers (Primary)</h3>
         <p>
-          For manual buzzing, each team should have a coloured card matching their team colour. The first team to raise their card gets to answer. Below are small previews of the BUZZ cards for each colour.
+          Let your teams buzz with their phones. Click the button below to create a room code and display a join link and QR. Share these with players so they can join via their phones.
+        </p>
+        <button id="create-room-btn">Enable Phone Buzzers</button>
+        <div id="phone-room-info" style="display:none; margin-top:0.75rem;">
+          <p><strong>Room code:</strong> <span id="phone-room-code">—</span></p>
+          <canvas id="phone-qr" width="180" height="180"></canvas>
+          <p><strong>Join URL:</strong> <span id="join-url"></span></p>
+        </div>
+      </div>
+
+      <!-- Manual buzzer instructions: backup coloured cards -->
+      <div class="buzzer-info">
+        <h3>Backup Colour Cards</h3>
+        <p>
+          As a fallback, each team can have a coloured card matching their team colour. The first team to raise their card gets to answer. Below are small previews of the coloured BUZZ cards.
         </p>
         <!-- Preview of printable buzzers: show small coloured cards with BUZZ text -->
         <div class="buzzer-preview-container">
@@ -90,5 +104,26 @@
     </div>
   </div>
   <script src="app.js"></script>
+  <!-- Firebase SDKs for phone buzzer functionality -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+  <!-- Include auth so anonymous sign‑in works if rules require it -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <!-- Placeholder QR renderer -->
+  <script src="assets/qr-min.js"></script>
+  <!-- Host-side phone integration -->
+  <script src="phones.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const btn = document.getElementById('create-room-btn');
+      if (btn) {
+        btn.addEventListener('click', async () => {
+          if (window.phones && typeof window.phones.createRoom === 'function') {
+            await window.phones.createRoom();
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>

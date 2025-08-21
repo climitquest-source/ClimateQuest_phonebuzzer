@@ -189,11 +189,10 @@ let currentQuestion = null;
 let selectedTeamIdx = null;
 let answerVisible = false;
 
-// Allow phones.js to select a team on remote buzz
-// When a remote player presses the BUZZ button, phones.js calls
-// window.remotePress(teamIndex). If a question is open and no team
-// has been selected yet, this will select the given team and highlight
-// the corresponding button in the modal.
+// Allow phones.js to select a team when a remote player buzzes in.
+// phones.js will call window.remotePress(teamIndex) when a player presses
+// the BUZZ button on their phone. If a question is open and no team has
+// been selected yet, this function selects the given team and highlights it.
 window.remotePress = function(teamIndex) {
   // Ensure a question is open and no team has been chosen yet
   if (!currentQuestion || selectedTeamIdx !== null) return;
@@ -254,6 +253,9 @@ function setupTeamForm() {
       const { color } = COLOUR_OPTIONS[i];
       teams.push({ name, color, score: 0 });
     }
+    // Expose teams on the window so phones.js can read them when creating
+    // a remote buzzer room. Without this, window.teams would be undefined.
+    window.teams = teams;
     // Build the scoreboard and board
     buildScoreboard();
     buildBoard();
@@ -352,13 +354,10 @@ function openQuestion(category, questionObj, cellEl) {
   showAnsBtn.textContent = 'Show Answer';
   showAnsBtn.disabled = false;
 
-  // If phone buzzers are enabled, open the remote buzzers for this question
+  // If phone buzzers are available, open remote buzzers for this question.
+  // This sets buzzersOpen flag and allows remote players to buzz once.
   if (window.phones && typeof window.phones.openRemote === 'function') {
-    try {
-      window.phones.openRemote();
-    } catch (e) {
-      console.warn('Failed to open remote buzzers', e);
-    }
+    window.phones.openRemote();
   }
 }
 
@@ -428,12 +427,8 @@ function finishQuestion(markUsed = true) {
   // Always re-enable show answer button for next question
   document.getElementById('show-answer').disabled = false;
 
-  // Close remote buzzers when a question ends (correct, wrong or burned)
+  // If phone buzzers are enabled, close remote buzzers after question finishes.
   if (window.phones && typeof window.phones.closeRemote === 'function') {
-    try {
-      window.phones.closeRemote();
-    } catch (e) {
-      console.warn('Failed to close remote buzzers', e);
-    }
+    window.phones.closeRemote();
   }
 }

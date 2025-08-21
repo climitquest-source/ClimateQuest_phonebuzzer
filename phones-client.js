@@ -44,6 +44,14 @@
     const cfg = await resp.json();
     fbApp = firebase.initializeApp(cfg, 'buzzerApp');
     db = firebase.database(fbApp);
+    // Anonymous auth to satisfy security rules when required. If auth isn't
+    // enabled or not required, this will silently fail and is safe to ignore.
+    try {
+      const auth = firebase.auth(fbApp);
+      await auth.signInAnonymously();
+    } catch (e) {
+      console.warn('Anon auth failed (client)', e);
+    }
   }
   // Prefill form if hash present
   function prefill() {
