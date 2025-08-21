@@ -59,6 +59,10 @@
     if (hash && hash.length > 1) {
       const code = hash.substring(1);
       roomInput.value = code.toUpperCase();
+      // Automatically fetch teams for this room so the team dropdown
+      // populates even before the user presses Join. This improves UX when
+      // arriving via a URL with the code hash.
+      populateTeams(code.toUpperCase()).catch(() => {});
     }
   }
   // Populate team dropdown by reading team metadata from room
