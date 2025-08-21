@@ -127,17 +127,17 @@
       const btn = document.getElementById('create-room-btn');
       if (btn) {
         btn.addEventListener('click', async () => {
-          // If teams have not yet been defined (e.g. Start Game hasn't been
-          // clicked), read the selected team count and names now so remote
-          // players see proper options. This mirrors the logic in app.js.
-          if (!window.teams || window.teams.length === 0) {
+          // Always gather the current team names and colours before creating
+          // a phone room. This ensures the remote team list matches whatever
+          // the host has selected, even if a previous game created window.teams.
+          {
             const countSel = document.getElementById('team-count');
             const count = countSel ? parseInt(countSel.value) : 0;
             window.teams = [];
             for (let i = 0; i < count; i++) {
               const input = document.getElementById(`team-name-${i}`);
               const name = input && input.value ? input.value.trim() : '';
-              // Match the default colours defined in app.js (COLOUR_OPTIONS)
+              // Default colours correspond to COLOUR_OPTIONS in app.js.
               const defaultColours = ['#2d6a4f', '#386fa4', '#e9c46a', '#e76f51'];
               const defaultNames   = ['Green', 'Blue', 'Yellow', 'Red'];
               const colour = defaultColours[i] || '#386fa4';

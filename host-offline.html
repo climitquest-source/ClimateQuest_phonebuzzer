@@ -119,9 +119,10 @@
       const btn = document.getElementById('create-room-btn');
       if (btn) {
         btn.addEventListener('click', async () => {
-          // Populate teams if Start Game hasn't been pressed yet. This ensures
-          // players can choose their team when joining via phone buzzers.
-          if (!window.teams || window.teams.length === 0) {
+          // Always gather the current team names and colours before creating
+          // a phone room. This ensures the remote team list matches whatever
+          // the host has selected, even if a previous game created window.teams.
+          {
             const countSel = document.getElementById('team-count');
             const count = countSel ? parseInt(countSel.value) : 0;
             window.teams = [];
