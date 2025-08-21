@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cli‑Mit Quest – Buzzer</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="buzzer-body">
+  <main class="buzzer-main">
+    <!-- Join card -->
+    <section id="join-card" class="card">
+      <h2>Join Game</h2>
+      <div class="row">
+        <label for="room">Room code</label>
+        <input id="room" placeholder="e.g., ABC123" autocomplete="off" />
+      </div>
+      <div class="row">
+        <label for="name">Your name</label>
+        <input id="name" placeholder="Your name" maxlength="18" autocomplete="off" />
+      </div>
+      <div class="row">
+        <label for="team">Team</label>
+        <select id="team"></select>
+      </div>
+      <div class="cta">
+        <button id="join-btn" class="primary">Join</button>
+      </div>
+      <div class="note" id="joinStatus" role="status"></div>
+    </section>
+    <!-- Buzz card -->
+    <section id="buzz-card" class="card" style="display:none;">
+      <h2 id="buzz-header">Team</h2>
+      <div class="big-buzz">
+        <button id="buzz-btn" class="buzz-btn">BUZZ</button>
+      </div>
+      <div class="note" id="buzzStatus" role="status">Waiting for host…</div>
+      <div class="cta">
+        <button id="leave-btn" class="ghost">Leave</button>
+      </div>
+    </section>
+  </main>
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+  <!-- Our client script -->
+  <script src="phones-client.js"></script>
+</body>
+</html>

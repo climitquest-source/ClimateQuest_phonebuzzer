@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cli‑Mit Quest Offline</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Cli‑Mit Quest</h1>
+    <p>Offline Host Screen</p>
+  </header>
+  <main>
+    <section id="scoreboard"></section>
+    <section id="board"></section>
+
+    <!-- Instructions shown after game starts -->
+    <section id="instructions" style="display:none; max-width: 900px; margin-top:1rem;" aria-live="polite">
+      <h2>How to Play with Colour Buzzers</h2>
+      <p>
+        Each team has a colour. When a question is asked, the first team to hold
+        up their coloured card or flag gets to answer. The host clicks the
+        corresponding colour button in the modal to register which team buzzed
+        in. Only when the answer is judged correct will the question tile
+        disappear and points be awarded.
+      </p>
+      <p>
+        Need cards? Print the <a href="buzzers.html" target="_blank">colour buzzer cards</a>
+        (one per team) before hosting. They include a large coloured bar with
+        the team name for easy visibility.
+      </p>
+    </section>
+  </main>
+
+  <!-- Setup Modal: choose number of teams and names -->
+  <div id="setup-modal" class="setup-overlay">
+    <div class="setup-content">
+      <h2>Game Setup</h2>
+      <p>Select the number of teams and enter their names.</p>
+      <label for="team-count">Number of teams:</label>
+      <select id="team-count">
+        <option value="2">2 Teams</option>
+        <option value="3">3 Teams</option>
+        <option value="4">4 Teams</option>
+      </select>
+      <div id="team-names"></div>
+      <button id="start-game-btn">Start Game</button>
+
+      <!-- Buzzer instructions and print link on setup page -->
+      <div class="buzzer-info">
+        <h3>Prepare Your Buzzers</h3>
+        <p>
+          For manual buzzing, each team should have a coloured card matching their team colour. The first team to raise their card gets to answer. Below are small previews of the BUZZ cards for each colour.
+        </p>
+        <!-- Preview of printable buzzers: show small coloured cards with BUZZ text -->
+        <div class="buzzer-preview-container">
+          <div class="buzzer-preview green">BUZZ</div>
+          <div class="buzzer-preview blue">BUZZ</div>
+          <div class="buzzer-preview yellow">BUZZ</div>
+          <div class="buzzer-preview red">BUZZ</div>
+        </div>
+        <p>
+          You can print full‑size coloured “BUZZ” cards for each team before hosting. These cards are larger postcard‑sized versions of the previews shown above.
+          <a href="buzzers.html" target="_blank">Open printable buzzer cards</a>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div id="modal" class="hidden">
+    <div class="modal-content">
+      <h2 id="modal-category"></h2>
+      <p id="modal-question"></p>
+      <!-- Answer block: use inline display none so JS can toggle it -->
+      <div id="answer-block" style="display:none;">
+        <p id="modal-answer"></p>
+      </div>
+      <div class="modal-actions">
+        <!-- Team buttons row -->
+        <div id="team-select"></div>
+        <!-- Control buttons row -->
+        <div class="control-buttons">
+          <button id="show-answer">Show Answer</button>
+          <button id="correct-btn" class="success">Correct</button>
+          <button id="wrong-btn" class="fail">Wrong</button>
+          <button id="burnout-btn" class="burnout">Burnout</button>
+          <button id="close-btn">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

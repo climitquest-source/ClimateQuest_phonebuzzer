@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Printable Buzzers</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 1rem;
+      background: #f5f5f5;
+      color: #214f3d;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    p {
+      max-width: 700px;
+      margin: 0 auto 1rem auto;
+      font-size: 0.95rem;
+    }
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+    .buzzer-card {
+      /* Larger postcard size for printing */
+      width: 250px;
+      height: 350px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 2.5rem;
+      font-weight: bold;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      text-transform: uppercase;
+    }
+    /* Specific colours for each buzzer */
+    .green { background: #2d6a4f; }
+    .blue  { background: #386fa4; }
+    .yellow{ background: #e9c46a; color: #214f3d; }
+    .red   { background: #e76f51; }
+    .buzzer-label {
+      margin-top: 0.75rem;
+      font-size: 1.1rem;
+      color: inherit;
+    }
+  </style>
+</head>
+<body>
+  <h1>Printable Buzzers</h1>
+  <p>
+    Below are four postcard‑sized buzzers. Print them on paper or cardstock and cut them out. Each card displays
+    a solid colour with the word “BUZZ” in the centre and the team name underneath. During the game, teams hold up their
+    coloured buzzer; the host clicks the matching colour button to register who buzzed first.
+  </p>
+  <div class="card-container">
+    <div class="buzzer-card green">
+      BUZZ
+      <div class="buzzer-label">Green Team</div>
+    </div>
+    <div class="buzzer-card blue">
+      BUZZ
+      <div class="buzzer-label">Blue Team</div>
+    </div>
+    <div class="buzzer-card yellow">
+      BUZZ
+      <div class="buzzer-label">Yellow Team</div>
+    </div>
+    <div class="buzzer-card red">
+      BUZZ
+      <div class="buzzer-label">Red Team</div>
+    </div>
+  </div>
+</body>
+</html>
