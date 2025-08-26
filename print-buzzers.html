@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Printable Buzzers – Cli‑Mit Quest</title>
+  <!-- Use same font and stylesheet as other pages -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <style>
+    /* Additional styles specific to the printable buzzer page */
+    .print-main {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      text-align: center;
+    }
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+    .buzzer-card {
+      width: 250px;
+      height: 350px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      font-weight: bold;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      text-transform: uppercase;
+    }
+    .buzzer-label {
+      margin-top: 0.75rem;
+      font-size: 1.1rem;
+      color: inherit;
+    }
+    /* Colour definitions for buzzer cards (reuse colours from COLOUR_OPTIONS) */
+    .green { background: #2d6a4f; color: #fff; }
+    .blue  { background: #386fa4; color: #fff; }
+    .yellow{ background: #e9c46a; color: #214f3d; }
+    .red   { background: #e76f51; color: #fff; }
+  </style>
+</head>
+<body>
+  <nav class="nav-bar">
+    <div class="nav-logo">
+      <img src="assets/logo.png" alt="Cli‑Mit Quest logo" />
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="play.html">Play</a></li>
+      <li><a href="how-to-play.html">How to Play</a></li>
+      <li><a href="print-buzzers.html" class="active">Print Buzzers</a></li>
+      <li><a href="contact.html">FAQ & Contact</a></li>
+    </ul>
+  </nav>
+  <main class="print-main">
+    <h1>Printable Buzzers</h1>
+    <p>
+      Below are four postcard‑sized buzzers. Print them on paper or cardstock and cut them out. Each card displays
+      a solid colour with the word “BUZZ” in the centre and the team name underneath. During the game, teams hold up their
+      coloured buzzer; the host clicks the matching colour button to register who buzzed first.
+    </p>
+    <div class="card-container">
+      <div class="buzzer-card green">
+        BUZZ
+        <div class="buzzer-label">Green Team</div>
+      </div>
+      <div class="buzzer-card blue">
+        BUZZ
+        <div class="buzzer-label">Blue Team</div>
+      </div>
+      <div class="buzzer-card yellow">
+        BUZZ
+        <div class="buzzer-label">Yellow Team</div>
+      </div>
+      <div class="buzzer-card red">
+        BUZZ
+        <div class="buzzer-label">Red Team</div>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <p>© 2025 Cli‑Mit Quest. All rights reserved.</p>
+    <p>
+      <a href="index.html">Home</a> |
+      <a href="play.html">Play</a> |
+      <a href="how-to-play.html">How to Play</a>
+    </p>
+  </footer>
+</body>
+</html>

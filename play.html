@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cli-Mit Quest</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Site navigation -->
+  <nav class="nav-bar">
+    <div class="nav-logo">
+      <img src="assets/logo.png" alt="Cli‑Mit Quest logo" />
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="play.html" class="active">Play</a></li>
+      <li><a href="how-to-play.html">How to Play</a></li>
+      <li><a href="print-buzzers.html">Print Buzzers</a></li>
+      <li><a href="contact.html">FAQ & Contact</a></li>
+    </ul>
+  </nav>
+  <main>
+    <!-- Scoreboard -->
+    <section id="scoreboard"></section>
+    <!-- Game Board -->
+    <section id="board"></section>
+
+    <!-- Instructions shown after game starts -->
+    <section id="instructions" style="display:none; max-width: 900px; margin-top:1rem;" aria-live="polite">
+      <h2>How to Play with Colour Buzzers</h2>
+      <p>
+        Each team has a colour. When a question is asked, the first team to hold
+        up their coloured card or flag gets to answer. The host clicks the
+        corresponding colour button in the modal to register which team buzzed
+        in. Only when the answer is judged correct will the question tile
+        disappear and points be awarded.
+      </p>
+      <p>
+        Need cards? Print the <a href="print-buzzers.html" target="_blank">colour buzzer cards</a>
+        (one per team) before hosting. They include a large coloured bar with
+        the team name for easy visibility.
+      </p>
+    </section>
+  </main>
+
+  <!-- Setup Modal: multi-step wizard for teams and buzzers -->
+  <div id="setup-modal" class="setup-overlay">
+    <div class="setup-content">
+      <!-- Step 1: Teams -->
+      <div id="team-step">
+        <h2>Game Setup</h2>
+        <p>Select the number of teams and enter their names.</p>
+        <label for="team-count">Number of teams:</label>
+        <select id="team-count">
+          <option value="1">1 Team</option>
+          <option value="2" selected>2 Teams</option>
+          <option value="3">3 Teams</option>
+          <option value="4">4 Teams</option>
+        </select>
+        <div id="team-names"></div>
+        <button id="to-phone-step" class="primary">Next: Buzzers</button>
+      </div>
+      <!-- Step 2: Buzzers and join list -->
+      <div id="phone-step" style="display:none;">
+        <h2>Phone Buzzers</h2>
+        <p>
+          Let your teams buzz with their phones. Click the button below to create a room code and display a join link and QR. Share these with players so they can join via their phones. A live list of joined players will appear below.
+        </p>
+        <button id="create-room-btn" class="primary">Enable Phone Buzzers</button>
+        <div id="phone-room-info" style="display:none; margin-top:0.75rem;">
+          <p><strong>Room code:</strong> <span id="phone-room-code">—</span></p>
+          <!-- Real QR image will be inserted by phones.js -->
+          <img id="phone-qr" width="180" height="180" alt="Room QR code" />
+          <p><strong>Join URL:</strong> <span id="join-url"></span></p>
+        </div>
+        <!-- Joined players list -->
+        <div id="player-list" style="display:none; margin-top:0.75rem;">
+          <h3>Joined players</h3>
+          <ul id="players-ul"></ul>
+        </div>
+        <!-- Backup colour cards: optional fallback -->
+        <div class="buzzer-info" style="margin-top:1rem;">
+          <h3>Backup Colour Cards</h3>
+          <p>
+            As a fallback, each team can have a coloured card matching their team colour. The first team to raise their card gets to answer. Below are small previews of the coloured BUZZ cards.
+          </p>
+          <div class="buzzer-preview-container">
+            <div class="buzzer-preview green">BUZZ</div>
+            <div class="buzzer-preview blue">BUZZ</div>
+            <div class="buzzer-preview yellow">BUZZ</div>
+            <div class="buzzer-preview red">BUZZ</div>
+          </div>
+          <p>
+            You can print full‑size coloured “BUZZ” cards for each team before hosting. These cards are larger postcard‑sized versions of the previews shown above.
+            <a href="buzzers.html" target="_blank">Open printable buzzer cards</a>
+          </p>
+        </div>
+        <button id="start-game-btn" class="primary" style="margin-top:1rem;">Start Game</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Question Modal -->
+  <div id="modal" class="hidden">
+    <div class="modal-content">
+      <h2 id="modal-category"></h2>
+      <p id="modal-question"></p>
+      <!-- Answer block: initially hidden via inline style. We do not assign the
+           'hidden' class here so that JavaScript can toggle its display
+           without !important overriding it. -->
+      <div id="answer-block" style="display:none;">
+        <p id="modal-answer"></p>
+      </div>
+        <!-- Timer display for countdown -->
+        <div id="timer-display" class="timer-display"></div>
+      <div class="modal-actions">
+        <!-- Team buttons row -->
+        <div id="team-select"></div>
+        <!-- Control buttons row -->
+        <div class="control-buttons">
+          <button id="show-answer">Show Answer</button>
+          <button id="correct-btn" class="success">Correct</button>
+          <button id="wrong-btn" class="fail">Wrong</button>
+          <button id="burnout-btn" class="burnout">Burnout</button>
+          <button id="close-btn">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game Summary Modal: shows final scores once all questions are used -->
+  <div id="summary-modal" class="hidden summary-overlay">
+    <div class="modal-content">
+      <h2>Final Scores</h2>
+      <ul id="final-scores"></ul>
+      <button id="play-again-btn" class="primary">Play Again</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <!-- Firebase SDKs for phone buzzer functionality -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+  <!-- Include auth so anonymous sign‑in works if rules require it -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <!-- Placeholder QR renderer (draws a stylised QR and join URL) -->
+  <script src="assets/qr-min.js"></script>
+  <!-- Host-side phone integration -->
+  <script src="phones.js"></script>
+  <script>
+    // Attach click handler for phone buzzer creation once the DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+      const btn = document.getElementById('create-room-btn');
+      if (btn) {
+        btn.addEventListener('click', async () => {
+          // Always gather the current team names and colours before creating
+          // a phone room. This ensures the remote team list matches whatever
+          // the host has selected, even if a previous game created window.teams.
+          {
+            const countSel = document.getElementById('team-count');
+            const count = countSel ? parseInt(countSel.value) : 0;
+            window.teams = [];
+            for (let i = 0; i < count; i++) {
+              const input = document.getElementById(`team-name-${i}`);
+              const name = input && input.value ? input.value.trim() : '';
+              // Default colours correspond to COLOUR_OPTIONS in app.js.
+              const defaultColours = ['#2d6a4f', '#386fa4', '#e9c46a', '#e76f51'];
+              const defaultNames   = ['Green', 'Blue', 'Yellow', 'Red'];
+              const colour = defaultColours[i] || '#386fa4';
+              const teamName = name || defaultNames[i] || `Team ${i + 1}`;
+              window.teams.push({ name: teamName, color: colour, score: 0 });
+            }
+          }
+          if (window.phones && typeof window.phones.createRoom === 'function') {
+            await window.phones.createRoom();
+            // After room creation, subscribe to player list updates so the host
+            // can see who has joined in real time. The callback receives
+            // an object keyed by userId, with fields {name, team, joined}.
+            if (typeof window.phones.onPlayerListUpdate === 'function') {
+              window.phones.onPlayerListUpdate((players) => {
+                const listDiv = document.getElementById('player-list');
+                const ul = document.getElementById('players-ul');
+                if (!listDiv || !ul) return;
+                // Show the list container once there is data
+                listDiv.style.display = 'block';
+                ul.innerHTML = '';
+                // players is an object {userId: {name, team, joined}}
+                Object.values(players).forEach((p) => {
+                  const li = document.createElement('li');
+                  const teamIdx = typeof p.team === 'number' ? p.team : 0;
+                  let teamName = '';
+                  if (window.teams && window.teams[teamIdx]) {
+                    teamName = window.teams[teamIdx].name;
+                  }
+                  li.textContent = p.name;
+                  // Colour the name tag using the team's colour and white text
+                  li.style.backgroundColor = window.teams && window.teams[teamIdx] ? window.teams[teamIdx].color : '#386fa4';
+                  li.style.color = '#fff';
+                  li.style.padding = '2px 6px';
+                  li.style.borderRadius = '4px';
+                  li.style.fontSize = '0.8rem';
+                  li.style.whiteSpace = 'nowrap';
+                  ul.appendChild(li);
+                });
+              });
+            }
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

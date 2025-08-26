@@ -189,6 +189,12 @@ let currentQuestion = null;
 let selectedTeamIdx = null;
 let answerVisible = false;
 
+// Timer variables: questionTimer triggers when time expires; countdownInterval
+// updates the on‑screen countdown every second. Both are cleared when a
+// question finishes.
+let questionTimer = null;
+let countdownInterval = null;
+
 // Allow phones.js to select a team when a remote player buzzes in.
 // phones.js will call window.remotePress(teamIndex) when a player presses
 // the BUZZ button on their phone. If a question is open and no team has
@@ -201,6 +207,85 @@ window.remotePress = function(teamIndex) {
     buttons[teamIndex].click();
   }
 };
+
+// ===================== Timer and Summary =====================
+// Start a countdown timer for the current question. Displays the remaining
+// time in the modal and automatically finishes the question when time
+// expires. Duration is in milliseconds.
+function startTimer(duration = 30000) {
+  // Clear any existing timers
+  clearTimeout(questionTimer);
+  clearInterval(countdownInterval);
+  const display = document.getElementById('timer-display');
+  if (!display) return;
+  let remaining = Math.floor(duration / 1000);
+  display.textContent = `Time left: ${remaining}s`;
+  // Every second, decrement and update display
+  countdownInterval = setInterval(() => {
+    remaining--;
+    if (remaining >= 0) {
+      display.textContent = `Time left: ${remaining}s`;
+    }
+  }, 1000);
+  // When time is up, finish the question without awarding points but
+  // mark the tile as used to advance the game. Remove timer display.
+  questionTimer = setTimeout(() => {
+    clearInterval(countdownInterval);
+    display.textContent = '';
+    // Treat as burnout (no points but remove tile)
+    finishQuestion(true);
+  }, duration);
+}
+
+// Clear any running timer and countdown display. Called when question
+// finishes due to correct answer, burnout or manual close.
+function clearTimer() {
+  clearTimeout(questionTimer);
+  clearInterval(countdownInterval);
+  const display = document.getElementById('timer-display');
+  if (display) display.textContent = '';
+  questionTimer = null;
+  countdownInterval = null;
+}
+
+// Check if all questions on the board have been used. If so, show
+// the summary modal with final scores.
+function checkGameEnd() {
+  const remainingCells = document.querySelectorAll('#board .cell:not(.category):not(.used)');
+  if (remainingCells.length === 0) {
+    showSummary();
+  }
+}
+
+// Display the final scores and ranking. Sort teams by descending score
+// and populate the list. Show the summary modal and hide the main board.
+function showSummary() {
+  const summaryModal = document.getElementById('summary-modal');
+  const list = document.getElementById('final-scores');
+  if (!summaryModal || !list) return;
+  list.innerHTML = '';
+  // Sort teams by score descending
+  const sorted = teams.slice().sort((a, b) => b.score - a.score);
+  sorted.forEach((team, index) => {
+    const li = document.createElement('li');
+    li.textContent = `${index + 1}. ${team.name}: ${team.score} pts`;
+    list.appendChild(li);
+  });
+  summaryModal.classList.remove('hidden');
+  // Hide board and scoreboard to focus on summary
+  const board = document.getElementById('board');
+  const scoreboard = document.getElementById('scoreboard');
+  if (board) board.style.display = 'none';
+  if (scoreboard) scoreboard.style.display = 'none';
+  // Attach Play Again handler
+  const playAgainBtn = document.getElementById('play-again-btn');
+  if (playAgainBtn) {
+    playAgainBtn.onclick = () => {
+      // Reload the page to reset state entirely
+      window.location.href = 'play.html';
+    };
+  }
+}
 
 // Entry point: once the DOM is ready, prepare the team setup form and
 // modal handlers.
@@ -244,14 +329,37 @@ function setupTeamForm() {
     buildNameInputs(count);
   });
 
-  // Transition from team setup to phone setup
+  // Transition from team setup to phone setup.  When only one team is
+  // selected, phone buzzers are unnecessary. In that case we skip
+  // directly to starting the game (single‑player mode). Otherwise we
+  // proceed to the phone step for multiplayer mode.
   if (toPhoneBtn) {
     toPhoneBtn.addEventListener('click', () => {
-      // Hide the team step and show the phone step
+      const count = parseInt(teamCountSelect.value);
       const teamStep = document.getElementById('team-step');
       const phoneStep = document.getElementById('phone-step');
-      if (teamStep) teamStep.style.display = 'none';
-      if (phoneStep) phoneStep.style.display = 'block';
+      if (count === 1) {
+        // Single player: build teams, start game immediately.
+        teams = [];
+        for (let i = 0; i < count; i++) {
+          const input = document.getElementById(`team-name-${i}`);
+          const name = input && input.value ? input.value.trim() : COLOUR_OPTIONS[i].defaultName;
+          const { color } = COLOUR_OPTIONS[i];
+          teams.push({ name, color, score: 0 });
+        }
+        window.teams = teams;
+        buildScoreboard();
+        buildBoard();
+        // Hide overlay and show instructions
+        const overlay = document.getElementById('setup-modal');
+        if (overlay) overlay.style.display = 'none';
+        const instructions = document.getElementById('instructions');
+        if (instructions) instructions.style.display = 'block';
+      } else {
+        // Multiplayer: show phone step
+        if (teamStep) teamStep.style.display = 'none';
+        if (phoneStep) phoneStep.style.display = 'block';
+      }
     });
   }
 
@@ -371,6 +479,9 @@ function openQuestion(category, questionObj, cellEl) {
   if (window.phones && typeof window.phones.openRemote === 'function') {
     window.phones.openRemote();
   }
+
+  // Start the countdown timer for this question
+  startTimer(30000);
 }
 
 // Highlight or clear highlight for scoreboard cards. Passing a negative index
@@ -455,11 +566,14 @@ function updateScores() {
 // then hide the modal and reset state variables.
 function finishQuestion(markUsed = true) {
   if (currentQuestion) {
+    // Mark the cell used if requested
     if (markUsed && currentQuestion.cellEl) {
       currentQuestion.cellEl.classList.add('used');
       currentQuestion.cellEl.textContent = '';
     }
   }
+  // Clear any running timer and countdown display
+  clearTimer();
   currentQuestion = null;
   selectedTeamIdx = null;
   answerVisible = false;
@@ -473,5 +587,9 @@ function finishQuestion(markUsed = true) {
   // If phone buzzers are enabled, close remote buzzers after question finishes.
   if (window.phones && typeof window.phones.closeRemote === 'function') {
     window.phones.closeRemote();
+  }
+  // If we removed a tile, check if the game has ended
+  if (markUsed) {
+    checkGameEnd();
   }
 }
