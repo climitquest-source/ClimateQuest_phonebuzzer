@@ -21,6 +21,12 @@
     </ul>
   </nav>
   <main>
+    <!-- Live room information: displayed once phone buzzers are enabled -->
+    <section id="room-info" style="display:none; max-width:900px; margin-bottom:0.5rem; background:rgba(255,255,255,0.95); padding:0.5rem 0.75rem; border-radius:6px; box-shadow:0 2px 4px rgba(0,0,0,0.1);">
+      <p style="margin:0;font-size:0.9rem;"><strong>Room code:</strong> <span id="live-room-code"></span></p>
+      <p style="margin:0;font-size:0.9rem;"><strong>Join link:</strong> <a id="live-join-url" href="#" target="_blank"></a></p>
+      <img id="live-room-qr" width="120" height="120" alt="Join game QR code" style="margin-top:0.4rem;border:1px solid #a3b18a;border-radius:4px;" />
+    </section>
     <!-- Scoreboard -->
     <section id="scoreboard"></section>
     <!-- Game Board -->

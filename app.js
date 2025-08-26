@@ -15,28 +15,50 @@ const PACK = {
       questions: [
         {
           value: 200,
-          question: "What are three Rs for waste management?",
-          answer: "Reuse, Reduce and Recycle"
+          question: "Name the three 'R's that summarize best practices for reducing waste.",
+          answer: "Reuse, Reduce and Recycle",
+          explanation: [
+            "Reduce: cut down on what you consume to avoid excess waste.",
+            "Reuse: find new uses for items instead of discarding them.",
+            "Recycle: process materials so they can be made into new products."
+          ]
         },
         {
           value: 400,
-          question: "How does one dispose of batteries?",
-          answer: "City of Toronto’s Drop‑off Depots or drop off on a community environment day"
+          question: "In Toronto, where can you safely dispose of used household batteries?",
+          answer: "At city drop‑off depots or during a community environment day",
+          explanation: [
+            "City of Toronto drop‑off depots accept household batteries.",
+            "Community environment days offer collection sites for safe disposal."
+          ]
         },
         {
           value: 600,
-          question: "True or false: contaminated pizza boxes go in the green bin?",
-          answer: "True"
+          question: "In Toronto, where should a greasy pizza box that can’t be recycled be placed?",
+          answer: "Green bin",
+          explanation: [
+            "Food‑soiled cardboard cannot be recycled.",
+            "Contaminated pizza boxes go in the green organics bin."
+          ]
         },
         {
           value: 800,
-          question: "Which bin do coffee cups go in Toronto?",
-          answer: "Green bin"
+          question: "In Toronto’s waste system, which bin should disposable coffee cups go into?",
+          answer: "Green bin",
+          explanation: [
+            "Lined paper cups cannot be recycled.",
+            "Put the cup in the green bin; sort the lid and sleeve separately."
+          ]
         },
         {
           value: 1000,
-          question: "How should you deal with a small amount of used cooking oil?",
-          answer: "Wipe with kitchen towels and leave the kitchen towels in the green bin"
+          question: "What’s the best way to dispose of a small amount of used cooking oil at home?",
+          answer: "Soak it up with kitchen paper and put it in the green bin",
+          explanation: [
+            "Let the oil cool before handling.",
+            "Use paper towel to soak up the oil.",
+            "Place the towel in the green bin; larger quantities should be taken to a drop‑off depot."
+          ]
         }
       ]
     },
@@ -45,28 +67,49 @@ const PACK = {
       questions: [
         {
           value: 200,
-          question: "Climate Crisis comes as a result of Global…",
-          answer: "Warming"
+          question: "The current climate crisis is primarily the result of global _________.",
+          answer: "Warming",
+          explanation: [
+            "Greenhouse gases trap heat in the atmosphere.",
+            "Human activities have caused global temperatures to rise."
+          ]
         },
         {
           value: 400,
-          question: "Which climate emergency often leads to ‘cooling centres’ being opened in cities?",
-          answer: "Heatwaves"
+          question: "What type of extreme weather typically prompts cities to open ‘cooling centres’?",
+          answer: "Heatwaves",
+          explanation: [
+            "Cooling centres provide safe, air‑conditioned places during extreme heat.",
+            "They help prevent heat‑related illnesses and deaths."
+          ]
         },
         {
           value: 600,
-          question: "What is the largest source of electricity generated in Ontario today?",
-          answer: "Nuclear"
+          question: "What energy source currently provides the majority of Ontario’s electricity?",
+          answer: "Nuclear",
+          explanation: [
+            "Ontario relies on several nuclear generating stations.",
+            "Nuclear plants supply most of the province’s electricity output."
+          ]
         },
         {
           value: 800,
-          question: "What is the safest place to shelter during a tornado?",
-          answer: "A basement or an interior room on the lowest floor, away from windows."
+          question: "During a tornado, where is the safest place to take shelter?",
+          answer: "In a basement or an interior room on the lowest floor away from windows",
+          explanation: [
+            "Go below ground if possible, such as into a basement.",
+            "If no basement exists, choose an interior room on the lowest floor and stay away from windows."
+          ]
         },
         {
           value: 1000,
-          question: "Where should the downspouts connect to?",
-          answer: "Disconnect to the city's sewer system; better at 2 metres away from the foundation"
+          question: "In stormwater management, where should your home’s downspouts drain?",
+          answer: "At least two metres from the foundation, away from the city's sewer system",
+          explanation: [
+            "Disconnect downspouts from the municipal sewer system.",
+            "Extend downspouts to discharge at least two metres from the building.",
+            "Use a splash pad, rain barrel or garden to absorb runoff."
+          ]
         }
       ]
     },
@@ -75,28 +118,57 @@ const PACK = {
       questions: [
         {
           value: 200,
-          question: "What is the best way to have a sustainable source of food in your community?",
-          answer: "Community Gardens"
+          question: "What type of shared space can provide a sustainable food source for a neighbourhood?",
+          answer: "A community garden",
+          explanation: [
+            "Neighbours share a plot of land to grow fruits, vegetables and herbs.",
+            "Community gardens increase access to fresh produce and build social ties."
+          ]
         },
         {
           value: 400,
-          question: "What is called to add food scraps and yard waste back into the soil to enrich gardens?",
-          answer: "Composting"
+          question: "What process adds kitchen scraps and yard waste back into the soil to enrich it?",
+          answer: "Composting",
+          explanation: [
+            "Organic waste is broken down by microorganisms.",
+            "The resulting humus improves soil fertility and structure."
+          ]
         },
         {
           value: 600,
-          question: "What are the most common vegetables that grow in Community Gardens in Toronto? Name three:",
-          answer: "Leafy greens like lettuce, kale, and swiss chard, as well as tomatoes, peppers, and beans. Root vegetables like beets and carrots are also popular choices. Additionally, cucumbers, squash, and zucchini are frequently cultivated"
+          question: "Name three popular vegetables commonly grown in Toronto’s community gardens.",
+          answer: "Lettuce, tomatoes and peppers",
+          explanation: [
+            "Leafy greens: lettuce, kale, swiss chard.",
+            "Fruiting crops: tomatoes, peppers, beans.",
+            "Root crops: beets, carrots.",
+            "Vining crops: cucumbers, squash, zucchini."
+          ]
         },
         {
           value: 800,
-          question: "Can you give some examples of Community Gardens in the City of Toronto?",
-          answer: "Wychwood Barns, MFRC Gardens, Eglinton Park Community Garden and the Rockcliffe Demonstration and Teaching Garden and Greenhouses. Other locations include Emmett Ave. Community Garden, New Horizons Community Garden, and Gate House Transformational Healing Garden."
+          question: "List some community garden locations in Toronto.",
+          answer: "Wychwood Barns, Eglinton Park and Rockcliffe Demonstration Gardens",
+          explanation: [
+            "Wychwood Barns Community Garden.",
+            "MFRC Gardens.",
+            "Eglinton Park Community Garden.",
+            "Rockcliffe Demonstration and Teaching Garden.",
+            "Emmett Avenue and New Horizons Community Gardens.",
+            "Gate House Transformational Healing Garden."
+          ]
         },
         {
           value: 1000,
-          question: "What would you do if you were to start a Community Garden?",
-          answer: "When considering a Community garden, key questions include site suitability (sunlight, soil, and space), resource availability (water, tools, and materials), and community engagement (participation, accessibility, and maintenance). Additionally, understanding the purpose of the garden (personal enjoyment, food production, or community building) and budgeting for its development are crucial"
+          question: "What key considerations and steps should you take when starting a community garden?",
+          answer: "Choose a sunny, accessible site and involve the community",
+          explanation: [
+            "Site suitability: sunlight, soil health, and adequate space.",
+            "Resource availability: water source, tools and materials.",
+            "Community engagement: participation, accessibility and shared maintenance.",
+            "Purpose: decide whether the focus is food production, education or community building.",
+            "Budgeting: plan the costs for building beds, soil, seeds and ongoing upkeep."
+          ]
         }
       ]
     },
@@ -105,28 +177,49 @@ const PACK = {
       questions: [
         {
           value: 200,
-          question: "Urban gardens also support biodiversity by attracting these important pollinators.",
-          answer: "Bees"
+          question: "Urban gardens support biodiversity by attracting which vital pollinators?",
+          answer: "Bees",
+          explanation: [
+            "Bees pollinate many crops and wild plants.",
+            "Without bees, fruit and vegetable yields would decline."
+          ]
         },
         {
           value: 400,
-          question: "Growing food locally reduces greenhouse gases which results in a lower:",
-          answer: "Carbon footprint"
+          question: "Growing food locally reduces greenhouse‑gas emissions and therefore lowers your ______.",
+          answer: "Carbon footprint",
+          explanation: [
+            "Local food doesn’t travel long distances by truck or plane.",
+            "Less transportation means fewer fossil‑fuel emissions."
+          ]
         },
         {
           value: 600,
-          question: "What are the top 3 green commute options?",
-          answer: "Walking, biking, and using public transportation"
+          question: "Name three environmentally friendly ways to commute.",
+          answer: "Walking, cycling and public transit",
+          explanation: [
+            "Walking requires no fuel and emits no greenhouse gases.",
+            "Cycling is a zero‑emission mode of transport.",
+            "Public transit moves many people at once, reducing per‑person emissions."
+          ]
         },
         {
           value: 800,
-          question: "The UN created these 17 goals in 2015 to guide global efforts toward a more sustainable future.",
-          answer: "Sustainable Development Goals (SDGs)"
+          question: "What collective name do the UN’s 17 goals, adopted in 2015, go by?",
+          answer: "Sustainable Development Goals (SDGs)",
+          explanation: [
+            "The SDGs cover 17 areas, including poverty, health, education and climate action.",
+            "They provide a blueprint for a more sustainable and equitable world by 2030."
+          ]
         },
         {
           value: 1000,
-          question: "What type of economy focuses on designing out waste and keeping products and materials in use?",
-          answer: "Circular Economy"
+          question: "What economic model aims to eliminate waste by keeping resources in use through reuse, repair and recycling?",
+          answer: "Circular Economy",
+          explanation: [
+            "Designs products for durability, reuse and repair.",
+            "Keeps materials circulating rather than sending them to landfill."
+          ]
         }
       ]
     },
@@ -135,36 +228,67 @@ const PACK = {
       questions: [
         {
           value: 200,
-          question: "True/False: Food Security entails that people don’t have access to affordable food sources?",
-          answer: "False"
+          question: "True or False: Food security means people lack access to affordable food.",
+          answer: "False",
+          explanation: [
+            "Food security means people have reliable access to sufficient, safe and nutritious food.",
+            "Food insecurity is when those conditions are not met."
+          ]
         },
         {
           value: 400,
-          question: "What is the difference between ‘food insecurity’ and ‘hunger’?",
-          answer: "Food insecurity is the lack of reliable access to sufficient, affordable, nutritious food; hunger is the physical sensation of not having enough food."
+          question: "How does food insecurity differ from hunger?",
+          answer: "Food insecurity is a lack of reliable access to sufficient, affordable, nutritious food; hunger is the physical sensation of not having enough food.",
+          explanation: [
+            "Food insecurity describes a social and economic condition.",
+            "Hunger is a biological feeling that can result from food insecurity but also from other factors."
+          ]
         },
         {
           value: 600,
-          question: "What is Food Security?",
-          answer: "Food security is defined as a situation that exists when all people, at all times, have physical, social and economic access to sufficient, safe and nutritious food that meets their dietary needs and food preferences for an active and healthy life."
+          question: "How does the United Nations define food security?",
+          answer: "When everyone has physical, social and economic access to sufficient, safe and nutritious food at all times",
+          explanation: [
+            "Food must be sufficient, safe and culturally appropriate.",
+            "Access can be physical, social or economic.",
+            "Food security is continuous – it must be maintained at all times."
+          ]
         },
         {
           value: 800,
-          question: "Which areas have potential food security challenges?",
-          answer: "Inner City Suburbs, particularly Priority Investment Neighbourhoods (PINs)"
+          question: "Which parts of Toronto face the greatest potential challenges in accessing food?",
+          answer: "Inner‑city suburbs, especially Priority Investment Neighbourhoods (PINs)",
+          explanation: [
+            "These areas often lack full‑service grocery stores.",
+            "Higher poverty rates and limited transit make food access more difficult."
+          ]
         },
         {
           value: 1000,
-          question: "Which groups in the city are most prone to being food insecure?",
-          answer: "The risk of food insecurity is higher for individuals and families that are racialized (especially Black people), are Indigenous, are part of the 2SLGBTQIA+ community, have a low income, receive social assistance such as Ontario Works or Ontario Disability Support Program, live with a disability, rent their home, live in households led by lone parents (especially female lone parents), or are new to Canada."
+          question: "Which groups in Toronto are most at risk of food insecurity?",
+          answer: "Racialized and Indigenous people, 2SLGBTQIA+ people, low‑income individuals, people on social assistance, people with disabilities, renters, lone‑parent households and newcomers",
+          explanation: [
+            "Racialized people (especially Black communities)",
+            "Indigenous people",
+            "Members of the 2SLGBTQIA+ community",
+            "Individuals and families with low income",
+            "People receiving social assistance (e.g., Ontario Works, ODSP)",
+            "People living with disabilities",
+            "Renters, as opposed to homeowners",
+            "Households led by lone parents, particularly female heads",
+            "Recent newcomers to Canada"
+          ]
         }
       ]
     }
   ],
-  // Final question used if you wish to add a final round. Not used in current UI.
   final_question: {
-    question: "This Canadian program, started in 2019, aims to reduce household food insecurity by improving access to healthy food for school‑aged children.",
-    answer: "What is the Canada Food Policy / School Food Program?"
+    question: "Which Canadian program launched in 2019 seeks to reduce household food insecurity by improving access to nutritious food for school‑aged children?",
+    answer: "The Canada Food Policy / National School Food Program",
+    explanation: [
+      "The Canada Food Policy introduces a National School Food Program.",
+      "It aims to ensure all children have access to healthy meals and reduce household food insecurity."
+    ]
   }
 };
 
@@ -194,6 +318,50 @@ let answerVisible = false;
 // question finishes.
 let questionTimer = null;
 let countdownInterval = null;
+
+// ===================== Sound player =====================
+// Simple beep sound generator using Web Audio API. Each type uses a
+// different frequency and duration to distinguish events. Volume is
+// kept low to avoid startling the audience and to remain instrument‑free.
+function playSound(type) {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'square';
+    let freq = 440; // default mid tone
+    let duration = 0.2;
+    switch (type) {
+      case 'correct':
+        freq = 880; // high tone
+        duration = 0.25;
+        break;
+      case 'wrong':
+        freq = 220; // low tone
+        duration = 0.25;
+        break;
+      case 'timer-warning':
+        freq = 660;
+        duration = 0.15;
+        break;
+      case 'timer-end':
+        freq = 300;
+        duration = 0.3;
+        break;
+      default:
+        break;
+    }
+    osc.frequency.value = freq;
+    gain.gain.setValueAtTime(0.1, ctx.currentTime);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start();
+    osc.stop(ctx.currentTime + duration);
+  } catch (e) {
+    // Fail silently if Web Audio API is not available
+    console.warn('Unable to play sound:', e);
+  }
+}
 
 // Allow phones.js to select a team when a remote player buzzes in.
 // phones.js will call window.remotePress(teamIndex) when a player presses
@@ -227,12 +395,19 @@ function startTimer(duration = 30000) {
       display.textContent = `Time left: ${remaining}s`;
     }
   }, 1000);
+  // Play a warning beep 5 seconds before time is up
+  if (duration > 5000) {
+    setTimeout(() => {
+      playSound('timer-warning');
+    }, duration - 5000);
+  }
   // When time is up, finish the question without awarding points but
   // mark the tile as used to advance the game. Remove timer display.
   questionTimer = setTimeout(() => {
     clearInterval(countdownInterval);
     display.textContent = '';
     // Treat as burnout (no points but remove tile)
+    playSound('timer-end');
     finishQuestion(true);
   }, duration);
 }
@@ -446,7 +621,27 @@ function openQuestion(category, questionObj, cellEl) {
   // Populate modal content
   document.getElementById('modal-category').textContent = `${category.name} – ${questionObj.value} points`;
   document.getElementById('modal-question').textContent = questionObj.question;
-  document.getElementById('modal-answer').textContent = questionObj.answer;
+  // Populate answer and explanation. If the question has an explanation
+  // array (bullet points), render the answer as a short phrase and list
+  // the explanation beneath it. Otherwise, just display the answer.
+  const answerContainer = document.getElementById('modal-answer');
+  answerContainer.innerHTML = '';
+  // Add the short answer
+  const ansPara = document.createElement('p');
+  ansPara.textContent = questionObj.answer;
+  answerContainer.appendChild(ansPara);
+  // If explanation is provided as an array, render bullet list
+  if (Array.isArray(questionObj.explanation) && questionObj.explanation.length > 0) {
+    const ul = document.createElement('ul');
+    ul.style.margin = '0.5rem 0';
+    ul.style.paddingLeft = '1.2rem';
+    questionObj.explanation.forEach((item) => {
+      const li = document.createElement('li');
+      li.textContent = item;
+      ul.appendChild(li);
+    });
+    answerContainer.appendChild(ul);
+  }
   // Hide answer block initially
   const answerBlock = document.getElementById('answer-block');
   answerBlock.style.display = 'none';
@@ -526,6 +721,8 @@ function setupModalHandlers() {
     if (currentQuestion && selectedTeamIdx !== null) {
       teams[selectedTeamIdx].score += currentQuestion.questionObj.value;
       updateScores();
+      // Play a success sound
+      playSound('correct');
       finishQuestion(true);
     }
   });
@@ -542,6 +739,8 @@ function setupModalHandlers() {
     if (window.phones && typeof window.phones.openRemote === 'function') {
       window.phones.openRemote();
     }
+    // Play a wrong-answer sound
+    playSound('wrong');
     // Do not close the modal or mark the cell; host may select another team.
   });
   burnoutBtn.addEventListener('click', () => {

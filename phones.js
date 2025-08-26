@@ -81,15 +81,39 @@
       const basePath = window.location.pathname.replace(/index\.html$/, '');
       const joinUrl = window.location.origin + basePath + 'buzzer.html#' + code;
       urlSpan.textContent = joinUrl;
-          // Generate a real QR code image using a public API. We don't rely
-          // on drawFakeQR here so players can scan the code directly.
-          const qrEl = document.getElementById('phone-qr');
-          if (qrEl) {
-            qrEl.src =
-              'https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=' +
-              encodeURIComponent(joinUrl);
-          }
-          infoDiv.style.display = 'block';
+      // Generate a real QR code image using a public API. We don't rely
+      // on drawFakeQR here so players can scan the code directly.
+      const qrEl = document.getElementById('phone-qr');
+      if (qrEl) {
+        qrEl.src =
+          'https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=' +
+          encodeURIComponent(joinUrl);
+      }
+      infoDiv.style.display = 'block';
+    }
+
+    // Store the current room and join URL globally so other components
+    // (like the game board) can display them while the game is running.
+    window.currentRoomCode = code;
+    const basePath = window.location.pathname.replace(/index\.html$/, '');
+    const joinUrl = window.location.origin + basePath + 'buzzer.html#' + code;
+    window.currentJoinUrl = joinUrl;
+    // If a persistent room-info element exists on the page, update it
+    const roomInfo = document.getElementById('room-info');
+    const liveCode = document.getElementById('live-room-code');
+    const liveUrl = document.getElementById('live-join-url');
+    const liveQr = document.getElementById('live-room-qr');
+    if (roomInfo && liveCode && liveUrl) {
+      roomInfo.style.display = 'block';
+      liveCode.textContent = code;
+      liveUrl.href = joinUrl;
+      liveUrl.textContent = joinUrl;
+      // Generate a QR code for the live display using the same API
+      if (liveQr) {
+        liveQr.src =
+          'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' +
+          encodeURIComponent(joinUrl);
+      }
     }
     return code;
   }
