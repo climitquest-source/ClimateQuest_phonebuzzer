@@ -338,6 +338,7 @@ let readingTimer = null;
 let readingInterval = null;
 let answerTimer = null;
 let answerInterval = null;
+let answerWarningTimeout = null;
 let answerTimerRunning = false;
 
 // ===================== Sound player =====================
@@ -424,6 +425,8 @@ function clearReadingTimer() {
 function clearAnswerTimer() {
   clearTimeout(answerTimer);
   clearInterval(answerInterval);
+  clearTimeout(answerWarningTimeout);
+  answerWarningTimeout = null;
   const display = document.getElementById('timer-display');
   if (display) display.textContent = '';
   answerTimer = null;
@@ -449,6 +452,10 @@ function startAnswerTimer() {
       display.textContent = `Time left: ${remaining}s`;
     }
   }, 1000);
+  // Schedule a warning sound 5 seconds before time expires (at 15 seconds)
+  answerWarningTimeout = setTimeout(() => {
+    playSound('timer-warning');
+  }, 15000);
   answerTimer = setTimeout(() => {
     // When answer time ends, mark the question as burned out and play a sound
     playSound('timer-end');
@@ -688,8 +695,14 @@ function openQuestion(category, questionObj, cellEl) {
   }
   // If explanation is provided as an array, render a bullet list
   if (Array.isArray(questionObj.explanation) && questionObj.explanation.length > 0) {
+    // Insert a header to clearly separate the explanation from the answer
+    const explHeader = document.createElement('p');
+    explHeader.textContent = 'Explanation:';
+    explHeader.style.fontWeight = '600';
+    explHeader.style.margin = '0.5rem 0 0.25rem 0';
+    answerContainer.appendChild(explHeader);
     const ul = document.createElement('ul');
-    ul.style.margin = '0.5rem 0';
+    ul.style.margin = '0';
     ul.style.paddingLeft = '1.2rem';
     questionObj.explanation.forEach((item) => {
       const li = document.createElement('li');
@@ -751,6 +764,8 @@ function openQuestion(category, questionObj, cellEl) {
   const display = document.getElementById('timer-display');
   let readingRemaining = 10;
   if (display) display.textContent = `Read the question: ${readingRemaining}s`;
+  // Play a sound to indicate the reading timer has started
+  playSound('timer-start');
   readingInterval = setInterval(() => {
     readingRemaining--;
     if (readingRemaining >= 0 && display) {
@@ -774,8 +789,8 @@ function openQuestion(category, questionObj, cellEl) {
     if (teams && teams.length === 1) {
       startAnswerTimer();
     }
-    // Play a short sound to indicate that buzzing can begin
-    playSound('timer-start');
+    // Play a sound to indicate the reading period has ended
+    playSound('timer-end');
   }, 10000);
 }
 
