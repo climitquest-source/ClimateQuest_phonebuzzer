@@ -6,7 +6,7 @@
         {
           "value": 200,
           "question": "Name the three 'R's that summarize best practices for reducing waste.",
-          "answer": "Reuse, Reduce and Recycle",
+          "answer": ["Reduce", "Reuse", "Recycle"],
           "explanation": [
             "Reduce: cut down on what you consume to avoid excess waste.",
             "Reuse: find new uses for items instead of discarding them.",
@@ -16,7 +16,7 @@
         {
           "value": 400,
           "question": "In Toronto, where can you safely dispose of used household batteries?",
-          "answer": "At city drop‑off depots or during a community environment day",
+          "answer": ["City drop‑off depots", "Community environment days"],
           "explanation": [
             "City of Toronto drop‑off depots accept household batteries.",
             "Community environment days offer collection sites for safe disposal."
@@ -25,7 +25,7 @@
         {
           "value": 600,
           "question": "In Toronto, where should a greasy pizza box that can’t be recycled be placed?",
-          "answer": "Green bin",
+          "answer": ["Green bin"],
           "explanation": [
             "Food‑soiled cardboard cannot be recycled.",
             "Contaminated pizza boxes go in the green organics bin."
@@ -34,7 +34,7 @@
         {
           "value": 800,
           "question": "In Toronto’s waste system, which bin should disposable coffee cups go into?",
-          "answer": "Green bin",
+          "answer": ["Green bin"],
           "explanation": [
             "Lined paper cups cannot be recycled.",
             "Put the cup in the green bin; sort the lid and sleeve separately."
@@ -43,7 +43,7 @@
         {
           "value": 1000,
           "question": "What’s the best way to dispose of a small amount of used cooking oil at home?",
-          "answer": "Soak it up with kitchen paper and put it in the green bin",
+          "answer": ["Soak with kitchen paper", "Place paper in the green bin"],
           "explanation": [
             "Let the oil cool before handling.",
             "Use paper towel to soak up the oil.",
@@ -58,7 +58,7 @@
         {
           "value": 200,
           "question": "The current climate crisis is primarily the result of global _________.",
-          "answer": "Warming",
+          "answer": ["Warming"],
           "explanation": [
             "Greenhouse gases trap heat in the atmosphere.",
             "Human activities have caused global temperatures to rise."
@@ -67,7 +67,7 @@
         {
           "value": 400,
           "question": "What type of extreme weather typically prompts cities to open ‘cooling centres’?",
-          "answer": "Heatwaves",
+          "answer": ["Heatwaves"],
           "explanation": [
             "Cooling centres provide safe, air‑conditioned places during extreme heat.",
             "They help prevent heat‑related illnesses and deaths."
@@ -76,7 +76,7 @@
         {
           "value": 600,
           "question": "What energy source currently provides the majority of Ontario’s electricity?",
-          "answer": "Nuclear",
+          "answer": ["Nuclear"],
           "explanation": [
             "Ontario relies on several nuclear generating stations.",
             "Nuclear plants supply most of the province’s electricity output."
@@ -85,7 +85,7 @@
         {
           "value": 800,
           "question": "During a tornado, where is the safest place to take shelter?",
-          "answer": "In a basement or an interior room on the lowest floor away from windows",
+          "answer": ["Basement", "Interior room on the lowest floor away from windows"],
           "explanation": [
             "Go below ground if possible, such as into a basement.",
             "If no basement exists, choose an interior room on the lowest floor and stay away from windows."
@@ -94,7 +94,7 @@
         {
           "value": 1000,
           "question": "In stormwater management, where should your home’s downspouts drain?",
-          "answer": "At least two metres from the foundation, away from the city's sewer system",
+          "answer": ["Two metres from the foundation", "Away from the city's sewer system"],
           "explanation": [
             "Disconnect downspouts from the municipal sewer system.",
             "Extend downspouts to discharge at least two metres from the building.",
@@ -109,7 +109,7 @@
         {
           "value": 200,
           "question": "What type of shared space can provide a sustainable food source for a neighbourhood?",
-          "answer": "A community garden",
+          "answer": ["Community garden"],
           "explanation": [
             "Neighbours share a plot of land to grow fruits, vegetables and herbs.",
             "Community gardens increase access to fresh produce and build social ties."
@@ -118,7 +118,7 @@
         {
           "value": 400,
           "question": "What process adds kitchen scraps and yard waste back into the soil to enrich it?",
-          "answer": "Composting",
+          "answer": ["Composting"],
           "explanation": [
             "Organic waste is broken down by microorganisms.",
             "The resulting humus improves soil fertility and structure."
@@ -127,7 +127,7 @@
         {
           "value": 600,
           "question": "Name three popular vegetables commonly grown in Toronto’s community gardens.",
-          "answer": "Lettuce, tomatoes and peppers",
+          "answer": ["Lettuce", "Tomatoes", "Peppers"],
           "explanation": [
             "Leafy greens: lettuce, kale, swiss chard.",
             "Fruiting crops: tomatoes, peppers, beans.",
@@ -138,7 +138,7 @@
         {
           "value": 800,
           "question": "List some community garden locations in Toronto.",
-          "answer": "Wychwood Barns, Eglinton Park and Rockcliffe Demonstration Gardens",
+          "answer": ["Wychwood Barns", "Eglinton Park", "Rockcliffe Demonstration Gardens"],
           "explanation": [
             "Wychwood Barns Community Garden.",
             "MFRC Gardens.",
@@ -151,7 +151,7 @@
         {
           "value": 1000,
           "question": "What key considerations and steps should you take when starting a community garden?",
-          "answer": "Choose a sunny, accessible site and involve the community",
+          "answer": ["Choose a sunny, accessible site", "Involve the community"],
           "explanation": [
             "Site suitability: sunlight, soil health, and adequate space.",
             "Resource availability: water source, tools and materials.",
@@ -168,7 +168,7 @@
         {
           "value": 200,
           "question": "Urban gardens support biodiversity by attracting which vital pollinators?",
-          "answer": "Bees",
+          "answer": ["Bees"],
           "explanation": [
             "Bees pollinate many crops and wild plants.",
             "Without bees, fruit and vegetable yields would decline."
@@ -177,7 +177,7 @@
         {
           "value": 400,
           "question": "Growing food locally reduces greenhouse‑gas emissions and therefore lowers your ______.",
-          "answer": "Carbon footprint",
+          "answer": ["Carbon footprint"],
           "explanation": [
             "Local food doesn’t travel long distances by truck or plane.",
             "Less transportation means fewer fossil‑fuel emissions."
@@ -186,7 +186,7 @@
         {
           "value": 600,
           "question": "Name three environmentally friendly ways to commute.",
-          "answer": "Walking, cycling and public transit",
+          "answer": ["Walking", "Cycling", "Public transit"],
           "explanation": [
             "Walking requires no fuel and emits no greenhouse gases.",
             "Cycling is a zero‑emission mode of transport.",
@@ -196,7 +196,7 @@
         {
           "value": 800,
           "question": "What collective name do the UN’s 17 goals, adopted in 2015, go by?",
-          "answer": "Sustainable Development Goals (SDGs)",
+          "answer": ["Sustainable Development Goals (SDGs)"],
           "explanation": [
             "The SDGs cover 17 areas, including poverty, health, education and climate action.",
             "They provide a blueprint for a more sustainable and equitable world by 2030."
@@ -205,7 +205,7 @@
         {
           "value": 1000,
           "question": "What economic model aims to eliminate waste by keeping resources in use through reuse, repair and recycling?",
-          "answer": "Circular Economy",
+          "answer": ["Circular Economy"],
           "explanation": [
             "Designs products for durability, reuse and repair.",
             "Keeps materials circulating rather than sending them to landfill."
@@ -219,7 +219,7 @@
         {
           "value": 200,
           "question": "True or False: Food security means people lack access to affordable food.",
-          "answer": "False",
+          "answer": ["False"],
           "explanation": [
             "Food security means people have reliable access to sufficient, safe and nutritious food.",
             "Food insecurity is when those conditions are not met."
@@ -228,7 +228,10 @@
         {
           "value": 400,
           "question": "How does food insecurity differ from hunger?",
-          "answer": "Food insecurity is a lack of reliable access to sufficient, affordable, nutritious food; hunger is the physical sensation of not having enough food.",
+          "answer": [
+            "Food insecurity: lack of reliable access to sufficient, affordable, nutritious food",
+            "Hunger: the physical sensation of not having enough food"
+          ],
           "explanation": [
             "Food insecurity describes a social and economic condition.",
             "Hunger is a biological feeling that can result from food insecurity but also from other factors."
@@ -237,7 +240,11 @@
         {
           "value": 600,
           "question": "How does the United Nations define food security?",
-          "answer": "When everyone has physical, social and economic access to sufficient, safe and nutritious food at all times",
+          "answer": [
+            "Access to sufficient, safe and nutritious food",
+            "Physical, social and economic access",
+            "Available at all times"
+          ],
           "explanation": [
             "Food must be sufficient, safe and culturally appropriate.",
             "Access can be physical, social or economic.",
@@ -247,7 +254,7 @@
         {
           "value": 800,
           "question": "Which parts of Toronto face the greatest potential challenges in accessing food?",
-          "answer": "Inner‑city suburbs, especially Priority Investment Neighbourhoods (PINs)",
+          "answer": ["Inner-city suburbs", "Priority Investment Neighbourhoods (PINs)"],
           "explanation": [
             "These areas often lack full‑service grocery stores.",
             "Higher poverty rates and limited transit make food access more difficult."
@@ -256,7 +263,17 @@
         {
           "value": 1000,
           "question": "Which groups in Toronto are most at risk of food insecurity?",
-          "answer": "Racialized and Indigenous people, 2SLGBTQIA+ people, low‑income individuals, people on social assistance, people with disabilities, renters, lone‑parent households and newcomers",
+          "answer": [
+            "Racialized people (especially Black communities)",
+            "Indigenous people",
+            "2SLGBTQIA+ community members",
+            "Low-income individuals and families",
+            "People on social assistance",
+            "People living with disabilities",
+            "Renters",
+            "Lone-parent households",
+            "Recent newcomers"
+          ],
           "explanation": [
             "Racialized people (especially Black communities)",
             "Indigenous people",
@@ -274,7 +291,7 @@
   ],
   "final_question": {
     "question": "Which Canadian program launched in 2019 seeks to reduce household food insecurity by improving access to nutritious food for school‑aged children?",
-    "answer": "The Canada Food Policy / National School Food Program",
+    "answer": ["Canada Food Policy / National School Food Program"],
     "explanation": [
       "The Canada Food Policy introduces a National School Food Program.",
       "It aims to ensure all children have access to healthy meals and reduce household food insecurity."

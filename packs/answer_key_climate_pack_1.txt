@@ -1,0 +1,235 @@
+Cli-Mit Quest Answer Key
+
+Category: Waste Management
+  200 points - Name the three 'R's that summarize best practices for reducing waste.
+    Answer:
+      - Reduce
+      - Reuse
+      - Recycle
+    Explanation:
+      - Reduce: cut down on what you consume to avoid excess waste.
+      - Reuse: find new uses for items instead of discarding them.
+      - Recycle: process materials so they can be made into new products.
+
+  400 points - In Toronto, where can you safely dispose of used household batteries?
+    Answer:
+      - City drop‑off depots
+      - Community environment days
+    Explanation:
+      - City of Toronto drop‑off depots accept household batteries.
+      - Community environment days offer collection sites for safe disposal.
+
+  600 points - In Toronto, where should a greasy pizza box that can’t be recycled be placed?
+    Answer:
+      - Green bin
+    Explanation:
+      - Food‑soiled cardboard cannot be recycled.
+      - Contaminated pizza boxes go in the green organics bin.
+
+  800 points - In Toronto’s waste system, which bin should disposable coffee cups go into?
+    Answer:
+      - Green bin
+    Explanation:
+      - Lined paper cups cannot be recycled.
+      - Put the cup in the green bin; sort the lid and sleeve separately.
+
+  1000 points - What’s the best way to dispose of a small amount of used cooking oil at home?
+    Answer:
+      - Soak with kitchen paper
+      - Place paper in the green bin
+    Explanation:
+      - Let the oil cool before handling.
+      - Use paper towel to soak up the oil.
+      - Place the towel in the green bin; larger quantities should be taken to a drop‑off depot.
+
+Category: Prepare for Climate Emergencies
+  200 points - The current climate crisis is primarily the result of global _________.
+    Answer:
+      - Warming
+    Explanation:
+      - Greenhouse gases trap heat in the atmosphere.
+      - Human activities have caused global temperatures to rise.
+
+  400 points - What type of extreme weather typically prompts cities to open ‘cooling centres’?
+    Answer:
+      - Heatwaves
+    Explanation:
+      - Cooling centres provide safe, air‑conditioned places during extreme heat.
+      - They help prevent heat‑related illnesses and deaths.
+
+  600 points - What energy source currently provides the majority of Ontario’s electricity?
+    Answer:
+      - Nuclear
+    Explanation:
+      - Ontario relies on several nuclear generating stations.
+      - Nuclear plants supply most of the province’s electricity output.
+
+  800 points - During a tornado, where is the safest place to take shelter?
+    Answer:
+      - Basement
+      - Interior room on the lowest floor away from windows
+    Explanation:
+      - Go below ground if possible, such as into a basement.
+      - If no basement exists, choose an interior room on the lowest floor and stay away from windows.
+
+  1000 points - In stormwater management, where should your home’s downspouts drain?
+    Answer:
+      - Two metres from the foundation
+      - Away from the city's sewer system
+    Explanation:
+      - Disconnect downspouts from the municipal sewer system.
+      - Extend downspouts to discharge at least two metres from the building.
+      - Use a splash pad, rain barrel or garden to absorb runoff.
+
+Category: Community Gardens
+  200 points - What type of shared space can provide a sustainable food source for a neighbourhood?
+    Answer:
+      - Community garden
+    Explanation:
+      - Neighbours share a plot of land to grow fruits, vegetables and herbs.
+      - Community gardens increase access to fresh produce and build social ties.
+
+  400 points - What process adds kitchen scraps and yard waste back into the soil to enrich it?
+    Answer:
+      - Composting
+    Explanation:
+      - Organic waste is broken down by microorganisms.
+      - The resulting humus improves soil fertility and structure.
+
+  600 points - Name three popular vegetables commonly grown in Toronto’s community gardens.
+    Answer:
+      - Lettuce
+      - Tomatoes
+      - Peppers
+    Explanation:
+      - Leafy greens: lettuce, kale, swiss chard.
+      - Fruiting crops: tomatoes, peppers, beans.
+      - Root crops: beets, carrots.
+      - Vining crops: cucumbers, squash, zucchini.
+
+  800 points - List some community garden locations in Toronto.
+    Answer:
+      - Wychwood Barns
+      - Eglinton Park
+      - Rockcliffe Demonstration Gardens
+    Explanation:
+      - Wychwood Barns Community Garden.
+      - MFRC Gardens.
+      - Eglinton Park Community Garden.
+      - Rockcliffe Demonstration and Teaching Garden.
+      - Emmett Avenue and New Horizons Community Gardens.
+      - Gate House Transformational Healing Garden.
+
+  1000 points - What key considerations and steps should you take when starting a community garden?
+    Answer:
+      - Choose a sunny, accessible site
+      - Involve the community
+    Explanation:
+      - Site suitability: sunlight, soil health, and adequate space.
+      - Resource availability: water source, tools and materials.
+      - Community engagement: participation, accessibility and shared maintenance.
+      - Purpose: decide whether the focus is food production, education or community building.
+      - Budgeting: plan the costs for building beds, soil, seeds and ongoing upkeep.
+
+Category: Sustainability
+  200 points - Urban gardens support biodiversity by attracting which vital pollinators?
+    Answer:
+      - Bees
+    Explanation:
+      - Bees pollinate many crops and wild plants.
+      - Without bees, fruit and vegetable yields would decline.
+
+  400 points - Growing food locally reduces greenhouse‑gas emissions and therefore lowers your ______.
+    Answer:
+      - Carbon footprint
+    Explanation:
+      - Local food doesn’t travel long distances by truck or plane.
+      - Less transportation means fewer fossil‑fuel emissions.
+
+  600 points - Name three environmentally friendly ways to commute.
+    Answer:
+      - Walking
+      - Cycling
+      - Public transit
+    Explanation:
+      - Walking requires no fuel and emits no greenhouse gases.
+      - Cycling is a zero‑emission mode of transport.
+      - Public transit moves many people at once, reducing per‑person emissions.
+
+  800 points - What collective name do the UN’s 17 goals, adopted in 2015, go by?
+    Answer:
+      - Sustainable Development Goals (SDGs)
+    Explanation:
+      - The SDGs cover 17 areas, including poverty, health, education and climate action.
+      - They provide a blueprint for a more sustainable and equitable world by 2030.
+
+  1000 points - What economic model aims to eliminate waste by keeping resources in use through reuse, repair and recycling?
+    Answer:
+      - Circular Economy
+    Explanation:
+      - Designs products for durability, reuse and repair.
+      - Keeps materials circulating rather than sending them to landfill.
+
+Category: Food Security
+  200 points - True or False: Food security means people lack access to affordable food.
+    Answer:
+      - False
+    Explanation:
+      - Food security means people have reliable access to sufficient, safe and nutritious food.
+      - Food insecurity is when those conditions are not met.
+
+  400 points - How does food insecurity differ from hunger?
+    Answer:
+      - Food insecurity: lack of reliable access to sufficient, affordable, nutritious food
+      - Hunger: the physical sensation of not having enough food
+    Explanation:
+      - Food insecurity describes a social and economic condition.
+      - Hunger is a biological feeling that can result from food insecurity but also from other factors.
+
+  600 points - How does the United Nations define food security?
+    Answer:
+      - Access to sufficient, safe and nutritious food
+      - Physical, social and economic access
+      - Available at all times
+    Explanation:
+      - Food must be sufficient, safe and culturally appropriate.
+      - Access can be physical, social or economic.
+      - Food security is continuous – it must be maintained at all times.
+
+  800 points - Which parts of Toronto face the greatest potential challenges in accessing food?
+    Answer:
+      - Inner-city suburbs
+      - Priority Investment Neighbourhoods (PINs)
+    Explanation:
+      - These areas often lack full‑service grocery stores.
+      - Higher poverty rates and limited transit make food access more difficult.
+
+  1000 points - Which groups in Toronto are most at risk of food insecurity?
+    Answer:
+      - Racialized people (especially Black communities)
+      - Indigenous people
+      - 2SLGBTQIA+ community members
+      - Low-income individuals and families
+      - People on social assistance
+      - People living with disabilities
+      - Renters
+      - Lone-parent households
+      - Recent newcomers
+    Explanation:
+      - Racialized people (especially Black communities)
+      - Indigenous people
+      - Members of the 2SLGBTQIA+ community
+      - Individuals and families with low income
+      - People receiving social assistance (e.g., Ontario Works, ODSP)
+      - People living with disabilities
+      - Renters, as opposed to homeowners
+      - Households led by lone parents, particularly female heads
+      - Recent newcomers to Canada
+
+Final Question:
+  Which Canadian program launched in 2019 seeks to reduce household food insecurity by improving access to nutritious food for school‑aged children?
+    Answer:
+      - Canada Food Policy / National School Food Program
+    Explanation:
+      - The Canada Food Policy introduces a National School Food Program.
+      - It aims to ensure all children have access to healthy meals and reduce household food insecurity.

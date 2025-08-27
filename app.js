@@ -16,7 +16,7 @@ const PACK = {
         {
           value: 200,
           question: "Name the three 'R's that summarize best practices for reducing waste.",
-          answer: "Reuse, Reduce and Recycle",
+          answer: ["Reduce", "Reuse", "Recycle"],
           explanation: [
             "Reduce: cut down on what you consume to avoid excess waste.",
             "Reuse: find new uses for items instead of discarding them.",
@@ -26,7 +26,7 @@ const PACK = {
         {
           value: 400,
           question: "In Toronto, where can you safely dispose of used household batteries?",
-          answer: "At city drop‑off depots or during a community environment day",
+          answer: ["City drop‑off depots", "Community environment days"],
           explanation: [
             "City of Toronto drop‑off depots accept household batteries.",
             "Community environment days offer collection sites for safe disposal."
@@ -35,7 +35,7 @@ const PACK = {
         {
           value: 600,
           question: "In Toronto, where should a greasy pizza box that can’t be recycled be placed?",
-          answer: "Green bin",
+          answer: ["Green bin"],
           explanation: [
             "Food‑soiled cardboard cannot be recycled.",
             "Contaminated pizza boxes go in the green organics bin."
@@ -44,7 +44,7 @@ const PACK = {
         {
           value: 800,
           question: "In Toronto’s waste system, which bin should disposable coffee cups go into?",
-          answer: "Green bin",
+          answer: ["Green bin"],
           explanation: [
             "Lined paper cups cannot be recycled.",
             "Put the cup in the green bin; sort the lid and sleeve separately."
@@ -53,7 +53,7 @@ const PACK = {
         {
           value: 1000,
           question: "What’s the best way to dispose of a small amount of used cooking oil at home?",
-          answer: "Soak it up with kitchen paper and put it in the green bin",
+          answer: ["Soak with kitchen paper", "Place paper in the green bin"],
           explanation: [
             "Let the oil cool before handling.",
             "Use paper towel to soak up the oil.",
@@ -68,7 +68,7 @@ const PACK = {
         {
           value: 200,
           question: "The current climate crisis is primarily the result of global _________.",
-          answer: "Warming",
+          answer: ["Warming"],
           explanation: [
             "Greenhouse gases trap heat in the atmosphere.",
             "Human activities have caused global temperatures to rise."
@@ -77,7 +77,7 @@ const PACK = {
         {
           value: 400,
           question: "What type of extreme weather typically prompts cities to open ‘cooling centres’?",
-          answer: "Heatwaves",
+          answer: ["Heatwaves"],
           explanation: [
             "Cooling centres provide safe, air‑conditioned places during extreme heat.",
             "They help prevent heat‑related illnesses and deaths."
@@ -86,7 +86,7 @@ const PACK = {
         {
           value: 600,
           question: "What energy source currently provides the majority of Ontario’s electricity?",
-          answer: "Nuclear",
+          answer: ["Nuclear"],
           explanation: [
             "Ontario relies on several nuclear generating stations.",
             "Nuclear plants supply most of the province’s electricity output."
@@ -95,7 +95,7 @@ const PACK = {
         {
           value: 800,
           question: "During a tornado, where is the safest place to take shelter?",
-          answer: "In a basement or an interior room on the lowest floor away from windows",
+          answer: ["Basement", "Interior room on the lowest floor away from windows"],
           explanation: [
             "Go below ground if possible, such as into a basement.",
             "If no basement exists, choose an interior room on the lowest floor and stay away from windows."
@@ -104,7 +104,7 @@ const PACK = {
         {
           value: 1000,
           question: "In stormwater management, where should your home’s downspouts drain?",
-          answer: "At least two metres from the foundation, away from the city's sewer system",
+          answer: ["Two metres from the foundation", "Away from the city's sewer system"],
           explanation: [
             "Disconnect downspouts from the municipal sewer system.",
             "Extend downspouts to discharge at least two metres from the building.",
@@ -119,7 +119,7 @@ const PACK = {
         {
           value: 200,
           question: "What type of shared space can provide a sustainable food source for a neighbourhood?",
-          answer: "A community garden",
+          answer: ["Community garden"],
           explanation: [
             "Neighbours share a plot of land to grow fruits, vegetables and herbs.",
             "Community gardens increase access to fresh produce and build social ties."
@@ -128,7 +128,7 @@ const PACK = {
         {
           value: 400,
           question: "What process adds kitchen scraps and yard waste back into the soil to enrich it?",
-          answer: "Composting",
+          answer: ["Composting"],
           explanation: [
             "Organic waste is broken down by microorganisms.",
             "The resulting humus improves soil fertility and structure."
@@ -137,7 +137,7 @@ const PACK = {
         {
           value: 600,
           question: "Name three popular vegetables commonly grown in Toronto’s community gardens.",
-          answer: "Lettuce, tomatoes and peppers",
+          answer: ["Lettuce", "Tomatoes", "Peppers"],
           explanation: [
             "Leafy greens: lettuce, kale, swiss chard.",
             "Fruiting crops: tomatoes, peppers, beans.",
@@ -148,7 +148,7 @@ const PACK = {
         {
           value: 800,
           question: "List some community garden locations in Toronto.",
-          answer: "Wychwood Barns, Eglinton Park and Rockcliffe Demonstration Gardens",
+          answer: ["Wychwood Barns", "Eglinton Park", "Rockcliffe Demonstration Gardens"],
           explanation: [
             "Wychwood Barns Community Garden.",
             "MFRC Gardens.",
@@ -161,7 +161,7 @@ const PACK = {
         {
           value: 1000,
           question: "What key considerations and steps should you take when starting a community garden?",
-          answer: "Choose a sunny, accessible site and involve the community",
+          answer: ["Choose a sunny, accessible site", "Involve the community"],
           explanation: [
             "Site suitability: sunlight, soil health, and adequate space.",
             "Resource availability: water source, tools and materials.",
@@ -178,7 +178,7 @@ const PACK = {
         {
           value: 200,
           question: "Urban gardens support biodiversity by attracting which vital pollinators?",
-          answer: "Bees",
+          answer: ["Bees"],
           explanation: [
             "Bees pollinate many crops and wild plants.",
             "Without bees, fruit and vegetable yields would decline."
@@ -187,7 +187,7 @@ const PACK = {
         {
           value: 400,
           question: "Growing food locally reduces greenhouse‑gas emissions and therefore lowers your ______.",
-          answer: "Carbon footprint",
+          answer: ["Carbon footprint"],
           explanation: [
             "Local food doesn’t travel long distances by truck or plane.",
             "Less transportation means fewer fossil‑fuel emissions."
@@ -196,7 +196,7 @@ const PACK = {
         {
           value: 600,
           question: "Name three environmentally friendly ways to commute.",
-          answer: "Walking, cycling and public transit",
+          answer: ["Walking", "Cycling", "Public transit"],
           explanation: [
             "Walking requires no fuel and emits no greenhouse gases.",
             "Cycling is a zero‑emission mode of transport.",
@@ -206,7 +206,7 @@ const PACK = {
         {
           value: 800,
           question: "What collective name do the UN’s 17 goals, adopted in 2015, go by?",
-          answer: "Sustainable Development Goals (SDGs)",
+          answer: ["Sustainable Development Goals (SDGs)"],
           explanation: [
             "The SDGs cover 17 areas, including poverty, health, education and climate action.",
             "They provide a blueprint for a more sustainable and equitable world by 2030."
@@ -215,7 +215,7 @@ const PACK = {
         {
           value: 1000,
           question: "What economic model aims to eliminate waste by keeping resources in use through reuse, repair and recycling?",
-          answer: "Circular Economy",
+          answer: ["Circular Economy"],
           explanation: [
             "Designs products for durability, reuse and repair.",
             "Keeps materials circulating rather than sending them to landfill."
@@ -229,7 +229,7 @@ const PACK = {
         {
           value: 200,
           question: "True or False: Food security means people lack access to affordable food.",
-          answer: "False",
+          answer: ["False"],
           explanation: [
             "Food security means people have reliable access to sufficient, safe and nutritious food.",
             "Food insecurity is when those conditions are not met."
@@ -238,7 +238,10 @@ const PACK = {
         {
           value: 400,
           question: "How does food insecurity differ from hunger?",
-          answer: "Food insecurity is a lack of reliable access to sufficient, affordable, nutritious food; hunger is the physical sensation of not having enough food.",
+          answer: [
+            "Food insecurity: lack of reliable access to sufficient, affordable, nutritious food",
+            "Hunger: the physical sensation of not having enough food"
+          ],
           explanation: [
             "Food insecurity describes a social and economic condition.",
             "Hunger is a biological feeling that can result from food insecurity but also from other factors."
@@ -247,7 +250,11 @@ const PACK = {
         {
           value: 600,
           question: "How does the United Nations define food security?",
-          answer: "When everyone has physical, social and economic access to sufficient, safe and nutritious food at all times",
+          answer: [
+            "Access to sufficient, safe and nutritious food",
+            "Physical, social and economic access",
+            "Available at all times"
+          ],
           explanation: [
             "Food must be sufficient, safe and culturally appropriate.",
             "Access can be physical, social or economic.",
@@ -257,7 +264,7 @@ const PACK = {
         {
           value: 800,
           question: "Which parts of Toronto face the greatest potential challenges in accessing food?",
-          answer: "Inner‑city suburbs, especially Priority Investment Neighbourhoods (PINs)",
+          answer: ["Inner-city suburbs", "Priority Investment Neighbourhoods (PINs)"],
           explanation: [
             "These areas often lack full‑service grocery stores.",
             "Higher poverty rates and limited transit make food access more difficult."
@@ -266,7 +273,17 @@ const PACK = {
         {
           value: 1000,
           question: "Which groups in Toronto are most at risk of food insecurity?",
-          answer: "Racialized and Indigenous people, 2SLGBTQIA+ people, low‑income individuals, people on social assistance, people with disabilities, renters, lone‑parent households and newcomers",
+          answer: [
+            "Racialized people (especially Black communities)",
+            "Indigenous people",
+            "2SLGBTQIA+ community members",
+            "Low-income individuals and families",
+            "People on social assistance",
+            "People living with disabilities",
+            "Renters",
+            "Lone-parent households",
+            "Recent newcomers"
+          ],
           explanation: [
             "Racialized people (especially Black communities)",
             "Indigenous people",
@@ -284,7 +301,7 @@ const PACK = {
   ],
   final_question: {
     question: "Which Canadian program launched in 2019 seeks to reduce household food insecurity by improving access to nutritious food for school‑aged children?",
-    answer: "The Canada Food Policy / National School Food Program",
+    answer: ["Canada Food Policy / National School Food Program"],
     explanation: [
       "The Canada Food Policy introduces a National School Food Program.",
       "It aims to ensure all children have access to healthy meals and reduce household food insecurity."
@@ -313,11 +330,15 @@ let currentQuestion = null;
 let selectedTeamIdx = null;
 let answerVisible = false;
 
-// Timer variables: questionTimer triggers when time expires; countdownInterval
-// updates the on‑screen countdown every second. Both are cleared when a
-// question finishes.
-let questionTimer = null;
-let countdownInterval = null;
+// Timer variables for the two‑stage timing system. Reading timers handle
+// the initial 10‑second reading period before buzzers open. Answer timers
+// provide 20 seconds for the selected team to respond. Each timer has
+// both a timeout and an interval for updating the on‑screen countdown.
+let readingTimer = null;
+let readingInterval = null;
+let answerTimer = null;
+let answerInterval = null;
+let answerTimerRunning = false;
 
 // ===================== Sound player =====================
 // Simple beep sound generator using Web Audio API. Each type uses a
@@ -347,6 +368,10 @@ function playSound(type) {
       case 'timer-end':
         freq = 300;
         duration = 0.3;
+        break;
+      case 'timer-start':
+        freq = 550;
+        duration = 0.2;
         break;
       default:
         break;
@@ -380,36 +405,55 @@ window.remotePress = function(teamIndex) {
 // Start a countdown timer for the current question. Displays the remaining
 // time in the modal and automatically finishes the question when time
 // expires. Duration is in milliseconds.
-function startTimer(duration = 30000) {
-  // Clear any existing timers
-  clearTimeout(questionTimer);
-  clearInterval(countdownInterval);
+// The legacy startTimer function is no longer used in this version. Timing
+// is handled by a two‑stage system: a 10‑second reading period and a
+// 20‑second answer period. The functions below implement these timers.
+
+// Clear any running reading timers and remove the timer display. This
+// is called whenever a question finishes or is dismissed.
+function clearReadingTimer() {
+  clearTimeout(readingTimer);
+  clearInterval(readingInterval);
+  readingTimer = null;
+  readingInterval = null;
+}
+
+// Clear any running answer timers and reset related state. Removes the
+// countdown from the display and resets answerTimerRunning so a new
+// timer can start on the next buzz.
+function clearAnswerTimer() {
+  clearTimeout(answerTimer);
+  clearInterval(answerInterval);
   const display = document.getElementById('timer-display');
-  if (!display) return;
-  let remaining = Math.floor(duration / 1000);
-  display.textContent = `Time left: ${remaining}s`;
-  // Every second, decrement and update display
-  countdownInterval = setInterval(() => {
+  if (display) display.textContent = '';
+  answerTimer = null;
+  answerInterval = null;
+  answerTimerRunning = false;
+}
+
+// Begin the 20‑second timer for the selected team. This is only called
+// after a team buzzes in. It updates the countdown every second and
+// automatically triggers a burnout when time expires. A start sound is
+// played when the timer begins.
+function startAnswerTimer() {
+  if (answerTimerRunning) return;
+  answerTimerRunning = true;
+  let remaining = 20;
+  const display = document.getElementById('timer-display');
+  if (display) display.textContent = `Time left: ${remaining}s`;
+  // Play a distinctive sound to indicate that answer time has begun
+  playSound('timer-start');
+  answerInterval = setInterval(() => {
     remaining--;
-    if (remaining >= 0) {
+    if (remaining >= 0 && display) {
       display.textContent = `Time left: ${remaining}s`;
     }
   }, 1000);
-  // Play a warning beep 5 seconds before time is up
-  if (duration > 5000) {
-    setTimeout(() => {
-      playSound('timer-warning');
-    }, duration - 5000);
-  }
-  // When time is up, finish the question without awarding points but
-  // mark the tile as used to advance the game. Remove timer display.
-  questionTimer = setTimeout(() => {
-    clearInterval(countdownInterval);
-    display.textContent = '';
-    // Treat as burnout (no points but remove tile)
+  answerTimer = setTimeout(() => {
+    // When answer time ends, mark the question as burned out and play a sound
     playSound('timer-end');
     finishQuestion(true);
-  }, duration);
+  }, 20000);
 }
 
 // Clear any running timer and countdown display. Called when question
@@ -621,16 +665,28 @@ function openQuestion(category, questionObj, cellEl) {
   // Populate modal content
   document.getElementById('modal-category').textContent = `${category.name} – ${questionObj.value} points`;
   document.getElementById('modal-question').textContent = questionObj.question;
-  // Populate answer and explanation. If the question has an explanation
-  // array (bullet points), render the answer as a short phrase and list
-  // the explanation beneath it. Otherwise, just display the answer.
+  // Populate answer and explanation. Support answers defined as an array
+  // of key words or short phrases. Arrays are rendered as bullet lists;
+  // strings are rendered as a single paragraph. The explanation is
+  // always displayed as a bulleted list if provided.
   const answerContainer = document.getElementById('modal-answer');
   answerContainer.innerHTML = '';
-  // Add the short answer
-  const ansPara = document.createElement('p');
-  ansPara.textContent = questionObj.answer;
-  answerContainer.appendChild(ansPara);
-  // If explanation is provided as an array, render bullet list
+  if (Array.isArray(questionObj.answer)) {
+    const ulAns = document.createElement('ul');
+    ulAns.style.margin = '0.5rem 0';
+    ulAns.style.paddingLeft = '1.2rem';
+    questionObj.answer.forEach((ans) => {
+      const li = document.createElement('li');
+      li.textContent = ans;
+      ulAns.appendChild(li);
+    });
+    answerContainer.appendChild(ulAns);
+  } else {
+    const ansPara = document.createElement('p');
+    ansPara.textContent = questionObj.answer;
+    answerContainer.appendChild(ansPara);
+  }
+  // If explanation is provided as an array, render a bullet list
   if (Array.isArray(questionObj.explanation) && questionObj.explanation.length > 0) {
     const ul = document.createElement('ul');
     ul.style.margin = '0.5rem 0';
@@ -654,11 +710,19 @@ function openQuestion(category, questionObj, cellEl) {
     btn.style.backgroundColor = team.color;
     btn.textContent = team.name;
     btn.addEventListener('click', () => {
+      // Ignore clicks if buttons are disabled (during reading)
+      if (btn.disabled) return;
       selectedTeamIdx = idx;
       document.querySelectorAll('.team-button').forEach(el => el.classList.remove('selected'));
       btn.classList.add('selected');
       // Highlight the corresponding scoreboard card for this team
       highlightScoreboard(idx);
+      // Close remote buzzers once a team has been selected to prevent others from buzzing
+      if (window.phones && typeof window.phones.closeRemote === 'function') {
+        window.phones.closeRemote();
+      }
+      // Start the answer timer if not already running
+      startAnswerTimer();
     });
     teamSelect.appendChild(btn);
   });
@@ -669,14 +733,50 @@ function openQuestion(category, questionObj, cellEl) {
   showAnsBtn.textContent = 'Show Answer';
   showAnsBtn.disabled = false;
 
-  // If phone buzzers are available, open remote buzzers for this question.
-  // This sets buzzersOpen flag and allows remote players to buzz once.
-  if (window.phones && typeof window.phones.openRemote === 'function') {
-    window.phones.openRemote();
-  }
+  // Clear any existing timers before starting a new timing cycle
+  clearReadingTimer();
+  clearAnswerTimer();
 
-  // Start the countdown timer for this question
-  startTimer(30000);
+  // Disable team selection buttons until the reading period ends
+  const teamSelectEl = document.getElementById('team-select');
+  const buttonsToDisable = teamSelectEl ? teamSelectEl.querySelectorAll('button.team-button') : [];
+  buttonsToDisable.forEach((btn) => {
+    btn.disabled = true;
+  });
+
+  // Begin a 10‑second reading phase. During this period, buzzers are
+  // unavailable and players should read the question. A countdown is
+  // displayed, and once time elapses, buzzers open and players may
+  // buzz in. Single‑player games automatically start the answer timer.
+  const display = document.getElementById('timer-display');
+  let readingRemaining = 10;
+  if (display) display.textContent = `Read the question: ${readingRemaining}s`;
+  readingInterval = setInterval(() => {
+    readingRemaining--;
+    if (readingRemaining >= 0 && display) {
+      display.textContent = `Read the question: ${readingRemaining}s`;
+    }
+  }, 1000);
+  readingTimer = setTimeout(() => {
+    clearInterval(readingInterval);
+    readingInterval = null;
+    // Enable buzzers and team buttons
+    buttonsToDisable.forEach((btn) => {
+      btn.disabled = false;
+    });
+    // Display buzz message
+    if (display) display.textContent = 'Buzz now!';
+    // Open phone buzzers if available
+    if (window.phones && typeof window.phones.openRemote === 'function') {
+      window.phones.openRemote();
+    }
+    // In single‑player mode, automatically start the answer timer
+    if (teams && teams.length === 1) {
+      startAnswerTimer();
+    }
+    // Play a short sound to indicate that buzzing can begin
+    playSound('timer-start');
+  }, 10000);
 }
 
 // Highlight or clear highlight for scoreboard cards. Passing a negative index
@@ -727,15 +827,22 @@ function setupModalHandlers() {
     }
   });
   wrongBtn.addEventListener('click', () => {
-    // On wrong answer, keep the question open and allow other teams to buzz.
-    // Reset the selected team and remove highlights.
+    // Incorrect answer: keep the question open and allow other teams to buzz.
+    // Reset selected team and remove highlights
     selectedTeamIdx = null;
     document.querySelectorAll('#team-select .team-button').forEach(btn => {
       btn.classList.remove('selected');
+      // Re-enable buttons in case they were disabled
+      btn.disabled = false;
     });
-    // Clear any scoreboard highlights
+    // Clear scoreboard highlight
     highlightScoreboard(-1);
-    // If phone buzzers are enabled, re‑open remote buzzing so another team can buzz in.
+    // Clear any running answer timer and reset timer display
+    clearAnswerTimer();
+    // Update the timer display to prompt for buzzing
+    const display = document.getElementById('timer-display');
+    if (display) display.textContent = 'Buzz now!';
+    // Re-open remote buzzers if available
     if (window.phones && typeof window.phones.openRemote === 'function') {
       window.phones.openRemote();
     }
@@ -771,8 +878,9 @@ function finishQuestion(markUsed = true) {
       currentQuestion.cellEl.textContent = '';
     }
   }
-  // Clear any running timer and countdown display
-  clearTimer();
+  // Clear any running reading or answer timers and countdown display
+  clearReadingTimer();
+  clearAnswerTimer();
   currentQuestion = null;
   selectedTeamIdx = null;
   answerVisible = false;
