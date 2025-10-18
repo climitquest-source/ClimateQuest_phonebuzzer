@@ -10,6 +10,7 @@
   let fbApp = null;
   let db = null;
   let auth = null;
+  let authReadyPromise = null;
   let roomRef = null;
   let openRef = null;
   let pressesRef = null;
@@ -36,6 +37,17 @@
       // For named app, get the auth instance and sign in
       auth = firebase.auth(fbApp);
       await auth.signInAnonymously();
+      // Ensure currentUser is available for downstream writes
+      authReadyPromise = auth.currentUser
+        ? Promise.resolve(auth.currentUser)
+        : new Promise((resolve) => {
+            const unsubscribe = auth.onAuthStateChanged((user) => {
+              if (user) {
+                unsubscribe();
+                resolve(user);
+              }
+            });
+          });
     } catch (e) {
       const roomInfo = document.getElementById('phone-room-info');
       if (roomInfo) {
@@ -69,13 +81,30 @@
       index: idx
     }));
     // Write initial room data: not open yet, no presses, and teams info
-    const hostUid = (auth && auth.currentUser && auth.currentUser.uid) || null;
-    await roomRef.set({
-      hostUid: hostUid,
-      open: false,
-      created: firebase.database.ServerValue.TIMESTAMP,
-      teams: teamData
-    });
+    let user = auth && auth.currentUser;
+    if (!user && authReadyPromise) {
+      try { user = await authReadyPromise; } catch (_) {}
+    }
+    const hostUid = (user && user.uid) || null;
+    try {
+      await roomRef.set({
+        hostUid: hostUid,
+        open: false,
+        created: firebase.database.ServerValue.TIMESTAMP,
+        teams: teamData
+      });
+    } catch (e) {
+      const infoDiv  = document.getElementById('phone-room-info');
+      if (infoDiv) {
+        const err = document.createElement('p');
+        err.style.color = '#dc3545';
+        err.textContent = 'Could not create room. Check network/auth and try again.';
+        infoDiv.style.display = 'block';
+        infoDiv.appendChild(err);
+      }
+      console.error('Failed to create room', e);
+      return null;
+    }
     // Set child references for later use
     openRef = roomRef.child('open');
     pressesRef = roomRef.child('presses');
