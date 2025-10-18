@@ -162,6 +162,20 @@
   <!-- Host-side phone integration -->
   <script defer src="phones.js"></script>
   <script>
+    // Ensure extensionless route "/play" autoloads the setup modal and phone step
+    document.addEventListener('DOMContentLoaded', () => {
+      const createBtn = document.getElementById('create-room-btn');
+      if (!createBtn) return;
+      // Safety: if team-step is visible, move to phone-step for quicker testing
+      const teamStep = document.getElementById('team-step');
+      const phoneStep = document.getElementById('phone-step');
+      if (teamStep && phoneStep && window.location.pathname.endsWith('/play')) {
+        teamStep.style.display = 'none';
+        phoneStep.style.display = 'block';
+      }
+    });
+  </script>
+  <script>
     // Attach click handler for phone buzzer creation once the DOM is ready
     document.addEventListener('DOMContentLoaded', () => {
       const btn = document.getElementById('create-room-btn');

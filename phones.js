@@ -115,9 +115,9 @@
     const infoDiv  = document.getElementById('phone-room-info');
     if (codeSpan && urlSpan && infoDiv) {
       codeSpan.textContent = code;
-      // Build join URL by replacing index.html with buzzer.html and adding hash
-      const basePath = window.location.pathname.replace(/index\.html$/, '');
-      const joinUrl = window.location.origin + basePath + 'buzzer.html#' + code;
+      // Build join URL based on current directory to support extensionless routes like /play
+      const baseDir = window.location.pathname.replace(/[^/]*$/, '');
+      const joinUrl = window.location.origin + baseDir + 'buzzer.html#' + code;
       urlSpan.textContent = joinUrl;
       // Generate a real QR code image using a public API. We don't rely
       // on drawFakeQR here so players can scan the code directly.
@@ -133,9 +133,11 @@
     // Store the current room and join URL globally so other components
     // (like the game board) can display them while the game is running.
     window.currentRoomCode = code;
-    const basePath = window.location.pathname.replace(/index\.html$/, '');
-    const joinUrl = window.location.origin + basePath + 'buzzer.html#' + code;
-    window.currentJoinUrl = joinUrl;
+    {
+      const baseDir2 = window.location.pathname.replace(/[^/]*$/, '');
+      const joinUrl2 = window.location.origin + baseDir2 + 'buzzer.html#' + code;
+      window.currentJoinUrl = joinUrl2;
+    }
     // If a persistent room-info element exists on the page, update it
     const roomInfo = document.getElementById('room-info');
     const liveCode = document.getElementById('live-room-code');
