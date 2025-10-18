@@ -9,6 +9,8 @@
   // Persistent state for the current Firebase room
   let fbApp = null;
   let db = null;
+  let auth = null;
+  let authReadyPromise = null;
   let roomRef = null;
   let openRef = null;
   let pressesRef = null;
@@ -33,10 +35,27 @@
     // rules do not require authentication.
     try {
       // For named app, get the auth instance and sign in
-      const auth = firebase.auth(fbApp);
+      auth = firebase.auth(fbApp);
       await auth.signInAnonymously();
+      // Ensure currentUser is available for downstream writes
+      authReadyPromise = auth.currentUser
+        ? Promise.resolve(auth.currentUser)
+        : new Promise((resolve) => {
+            const unsubscribe = auth.onAuthStateChanged((user) => {
+              if (user) {
+                unsubscribe();
+                resolve(user);
+              }
+            });
+          });
     } catch (e) {
-      // Ignore errors (for example if auth is not enabled or not required)
+      const roomInfo = document.getElementById('phone-room-info');
+      if (roomInfo) {
+        const p = document.createElement('p');
+        p.style.color = '#dc3545';
+        p.textContent = 'Authentication failed. Please reload.';
+        roomInfo.appendChild(p);
+      }
       console.warn('Anon auth failed (host)', e);
     }
   }
@@ -62,11 +81,30 @@
       index: idx
     }));
     // Write initial room data: not open yet, no presses, and teams info
-    await roomRef.set({
-      open: false,
-      created: Date.now(),
-      teams: teamData
-    });
+    let user = auth && auth.currentUser;
+    if (!user && authReadyPromise) {
+      try { user = await authReadyPromise; } catch (_) {}
+    }
+    const hostUid = (user && user.uid) || null;
+    try {
+      await roomRef.set({
+        hostUid: hostUid,
+        open: false,
+        created: firebase.database.ServerValue.TIMESTAMP,
+        teams: teamData
+      });
+    } catch (e) {
+      const infoDiv  = document.getElementById('phone-room-info');
+      if (infoDiv) {
+        const err = document.createElement('p');
+        err.style.color = '#dc3545';
+        err.textContent = 'Could not create room. Check network/auth and try again.';
+        infoDiv.style.display = 'block';
+        infoDiv.appendChild(err);
+      }
+      console.error('Failed to create room', e);
+      return null;
+    }
     // Set child references for later use
     openRef = roomRef.child('open');
     pressesRef = roomRef.child('presses');
@@ -77,9 +115,9 @@
     const infoDiv  = document.getElementById('phone-room-info');
     if (codeSpan && urlSpan && infoDiv) {
       codeSpan.textContent = code;
-      // Build join URL by replacing index.html with buzzer.html and adding hash
-      const basePath = window.location.pathname.replace(/index\.html$/, '');
-      const joinUrl = window.location.origin + basePath + 'buzzer.html#' + code;
+      // Build join URL based on current directory to support extensionless routes like /play
+      const baseDir = window.location.pathname.replace(/[^/]*$/, '');
+      const joinUrl = window.location.origin + baseDir + 'buzzer.html#' + code;
       urlSpan.textContent = joinUrl;
       // Generate a real QR code image using a public API. We don't rely
       // on drawFakeQR here so players can scan the code directly.
@@ -95,9 +133,11 @@
     // Store the current room and join URL globally so other components
     // (like the game board) can display them while the game is running.
     window.currentRoomCode = code;
-    const basePath = window.location.pathname.replace(/index\.html$/, '');
-    const joinUrl = window.location.origin + basePath + 'buzzer.html#' + code;
-    window.currentJoinUrl = joinUrl;
+    {
+      const baseDir2 = window.location.pathname.replace(/[^/]*$/, '');
+      const joinUrl2 = window.location.origin + baseDir2 + 'buzzer.html#' + code;
+      window.currentJoinUrl = joinUrl2;
+    }
     // If a persistent room-info element exists on the page, update it
     const roomInfo = document.getElementById('room-info');
     const liveCode = document.getElementById('live-room-code');

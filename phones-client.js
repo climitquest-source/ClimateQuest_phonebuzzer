@@ -22,6 +22,7 @@
   // Firebase state
   let fbApp = null;
   let db = null;
+  let auth = null;
   let roomRef = null;
   let playersRef = null;
   let pressesRef = null;
@@ -47,9 +48,11 @@
     // Anonymous auth to satisfy security rules when required. If auth isn't
     // enabled or not required, this will silently fail and is safe to ignore.
     try {
-      const auth = firebase.auth(fbApp);
+      auth = firebase.auth(fbApp);
       await auth.signInAnonymously();
     } catch (e) {
+      const el = document.getElementById('joinStatus');
+      if (el) { el.textContent = 'Auth error. Please retry in a moment.'; el.style.color = '#dc3545'; }
       console.warn('Anon auth failed (client)', e);
     }
   }
@@ -68,7 +71,14 @@
   // Populate team dropdown by reading team metadata from room
   async function populateTeams(code) {
     await initFirebase();
-    const teamsSnap = await db.ref('rooms/' + code + '/teams').get();
+    let teamsSnap;
+    try {
+      teamsSnap = await db.ref('rooms/' + code + '/teams').get();
+    } catch (e) {
+      const el = document.getElementById('joinStatus');
+      if (el) { el.textContent = 'Network blocked. Check connection/CSP.'; el.style.color = '#dc3545'; }
+      throw e;
+    }
     if (!teamsSnap.exists()) return null;
     const teams = teamsSnap.val() || [];
     // Clear existing options
@@ -108,7 +118,8 @@
       // Generate unique ID for this player
       userId = randomId();
       // Write player record
-      await playersRef.child(userId).set({ name, team: teamIdx, joined: Date.now() });
+      const authUid = (auth && auth.currentUser && auth.currentUser.uid) || null;
+      await playersRef.child(userId).set({ name, team: teamIdx, joined: firebase.database.ServerValue.TIMESTAMP, authUid });
       // Update UI: hide join card, show buzz card
       joinCard.style.display = 'none';
       buzzCard.style.display = 'block';
