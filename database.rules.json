@@ -1,0 +1,46 @@
+{
+  "rules": {
+    "rooms": {
+      "$code": {
+        // Room metadata readable by authenticated clients; writing restricted
+        ".read": "auth != null",
+        ".write": "auth != null && (newData.child('hostUid').val() === auth.uid || data.child('hostUid').val() === auth.uid)",
+        "players": {
+          "$playerId": {
+            ".read": "auth != null",
+            ".write": "auth != null",
+            // Ensure player records are well‑formed and small
+            ".validate": "newData.hasChildren(['name','team','joined']) && newData.child('name').isString() && newData.child('name').val().length > 0 && newData.child('name').val().length <= 32 && newData.child('team').isNumber() && newData.child('team').val() >= 0 && newData.child('team').val() < 8 && newData.child('joined').isNumber()"
+          }
+        },
+        "presses": {
+          ".read": "auth != null",
+          ".write": "auth != null",
+          "$pushId": {
+            ".validate": "newData.hasChildren(['team','name','ts']) && newData.child('team').isNumber() && newData.child('name').isString() && newData.child('name').val().length > 0 && newData.child('name').val().length <= 32 && newData.child('ts').isNumber()"
+          }
+        },
+        "open": {
+          ".read": "auth != null",
+          ".write": "auth != null && root.child('rooms/'+$code+'/hostUid').val() === auth.uid",
+          ".validate": "newData.isBoolean()"
+        },
+        // Host-only fields must be written by the host
+        "hostUid": {
+          ".read": "auth != null",
+          ".write": "auth != null && (!data.exists() && newData.val() === auth.uid)"
+        },
+        // Teams array is published by the host; readable to clients
+        "teams": {
+          ".read": "auth != null",
+          ".write": "auth != null && root.child('rooms/'+$code+'/hostUid').val() === auth.uid",
+          "$idx": {
+            ".validate": "newData.hasChildren(['name','color','index']) && newData.child('name').isString() && newData.child('color').isString() && newData.child('index').isNumber()"
+          }
+        }
+      }
+    },
+    ".read": false,
+    ".write": false
+  }
+}

@@ -9,6 +9,7 @@
   // Persistent state for the current Firebase room
   let fbApp = null;
   let db = null;
+  let auth = null;
   let roomRef = null;
   let openRef = null;
   let pressesRef = null;
@@ -33,7 +34,7 @@
     // rules do not require authentication.
     try {
       // For named app, get the auth instance and sign in
-      const auth = firebase.auth(fbApp);
+      auth = firebase.auth(fbApp);
       await auth.signInAnonymously();
     } catch (e) {
       // Ignore errors (for example if auth is not enabled or not required)
@@ -62,9 +63,11 @@
       index: idx
     }));
     // Write initial room data: not open yet, no presses, and teams info
+    const hostUid = (auth && auth.currentUser && auth.currentUser.uid) || null;
     await roomRef.set({
+      hostUid: hostUid,
       open: false,
-      created: Date.now(),
+      created: firebase.database.ServerValue.TIMESTAMP,
       teams: teamData
     });
     // Set child references for later use
