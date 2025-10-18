@@ -81,7 +81,7 @@
         <p>
           Let your teams buzz with their phones. Click the button below to create a room code and display a join link and QR. Share these with players so they can join via their phones. A live list of joined players will appear below.
         </p>
-        <button id="create-room-btn" class="primary">Enable Phone Buzzers</button>
+        <button id="create-room-btn" class="primary" onclick="window._enableBuzzers && window._enableBuzzers()">Enable Phone Buzzers</button>
         <div id="phone-room-info" style="display:none; margin-top:0.75rem;">
           <p><strong>Room code:</strong> <span id="phone-room-code">—</span></p>
           <!-- Real QR image will be inserted by phones.js -->
@@ -174,6 +174,61 @@
         phoneStep.style.display = 'block';
       }
     });
+  </script>
+  <script>
+    // Fallback handler: works even if other scripts reorder
+    window._enableBuzzers = async function() {
+      // Build teams from UI
+      const countSel = document.getElementById('team-count');
+      const count = countSel ? parseInt(countSel.value) : 0;
+      window.teams = [];
+      const defaultColours = ['#2d6a4f', '#386fa4', '#e9c46a', '#e76f51'];
+      const defaultNames   = ['Green', 'Blue', 'Yellow', 'Red'];
+      for (let i = 0; i < count; i++) {
+        const input = document.getElementById(`team-name-${i}`);
+        const name = input && input.value ? input.value.trim() : '';
+        const colour = defaultColours[i] || '#386fa4';
+        const teamName = name || defaultNames[i] || `Team ${i + 1}`;
+        window.teams.push({ name: teamName, color: colour, score: 0 });
+      }
+      // Wait briefly for phones.js if needed
+      const start = Date.now();
+      while (!(window.phones && typeof window.phones.createRoom === 'function')) {
+        if (Date.now() - start > 4000) break;
+        await new Promise(r => setTimeout(r, 100));
+      }
+      const infoDiv = document.getElementById('phone-room-info');
+      if (!window.phones || typeof window.phones.createRoom !== 'function') {
+        if (infoDiv) {
+          infoDiv.style.display = 'block';
+          infoDiv.innerHTML = '<p style="color:#dc3545;margin:0">Could not load buzzer module. Reload and try again.</p>';
+        }
+        return;
+      }
+      await window.phones.createRoom();
+      // Subscribe to player list updates
+      if (typeof window.phones.onPlayerListUpdate === 'function') {
+        window.phones.onPlayerListUpdate((players) => {
+          const listDiv = document.getElementById('player-list');
+          const ul = document.getElementById('players-ul');
+          if (!listDiv || !ul) return;
+          listDiv.style.display = 'block';
+          ul.innerHTML = '';
+          Object.values(players).forEach((p) => {
+            const li = document.createElement('li');
+            const teamIdx = typeof p.team === 'number' ? p.team : 0;
+            li.textContent = p.name;
+            li.style.backgroundColor = window.teams && window.teams[teamIdx] ? window.teams[teamIdx].color : '#386fa4';
+            li.style.color = '#fff';
+            li.style.padding = '2px 6px';
+            li.style.borderRadius = '4px';
+            li.style.fontSize = '0.8rem';
+            li.style.whiteSpace = 'nowrap';
+            ul.appendChild(li);
+          });
+        });
+      }
+    };
   </script>
   <script>
     // Attach click handler for phone buzzer creation once the DOM is ready
