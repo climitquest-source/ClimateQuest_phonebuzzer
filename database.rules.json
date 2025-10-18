@@ -4,7 +4,12 @@
       "$code": {
         // Room metadata readable by authenticated clients; writing restricted
         ".read": "auth != null",
-        ".write": "auth != null && (newData.child('hostUid').val() === auth.uid || data.child('hostUid').val() === auth.uid)",
+        ".write": "auth != null && (
+          // allow initial creation containing only hostUid set by the host
+          (!data.exists() && newData.hasOnly(['hostUid']) && newData.child('hostUid').val() === auth.uid) ||
+          // allow any subsequent write if hostUid matches
+          (data.child('hostUid').val() === auth.uid)
+        )",
         "players": {
           "$playerId": {
             ".read": "auth != null",

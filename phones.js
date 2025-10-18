@@ -80,15 +80,19 @@
       color: t.color,
       index: idx
     }));
-    // Write initial room data: not open yet, no presses, and teams info
+    // Ensure we have an authenticated user (anonymous is fine)
     let user = auth && auth.currentUser;
-    if (!user && authReadyPromise) {
-      try { user = await authReadyPromise; } catch (_) {}
+    if (!user && typeof firebase !== 'undefined' && auth && typeof auth.onAuthStateChanged === 'function') {
+      user = await new Promise((resolve) => {
+        const unsub = auth.onAuthStateChanged((u) => { if (u) { unsub(); resolve(u); } });
+      });
     }
     const hostUid = (user && user.uid) || null;
     try {
-      await roomRef.set({
-        hostUid: hostUid,
+      // Write hostUid first so subsequent writes satisfy rules
+      await roomRef.child('hostUid').set(hostUid);
+      // Then update remaining fields
+      await roomRef.update({
         open: false,
         created: firebase.database.ServerValue.TIMESTAMP,
         teams: teamData
