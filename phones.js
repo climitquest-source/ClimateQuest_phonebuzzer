@@ -37,7 +37,13 @@
       auth = firebase.auth(fbApp);
       await auth.signInAnonymously();
     } catch (e) {
-      // Ignore errors (for example if auth is not enabled or not required)
+      const roomInfo = document.getElementById('phone-room-info');
+      if (roomInfo) {
+        const p = document.createElement('p');
+        p.style.color = '#dc3545';
+        p.textContent = 'Authentication failed. Please reload.';
+        roomInfo.appendChild(p);
+      }
       console.warn('Anon auth failed (host)', e);
     }
   }

@@ -51,6 +51,8 @@
       auth = firebase.auth(fbApp);
       await auth.signInAnonymously();
     } catch (e) {
+      const el = document.getElementById('joinStatus');
+      if (el) { el.textContent = 'Auth error. Please retry in a moment.'; el.style.color = '#dc3545'; }
       console.warn('Anon auth failed (client)', e);
     }
   }
@@ -69,7 +71,14 @@
   // Populate team dropdown by reading team metadata from room
   async function populateTeams(code) {
     await initFirebase();
-    const teamsSnap = await db.ref('rooms/' + code + '/teams').get();
+    let teamsSnap;
+    try {
+      teamsSnap = await db.ref('rooms/' + code + '/teams').get();
+    } catch (e) {
+      const el = document.getElementById('joinStatus');
+      if (el) { el.textContent = 'Network blocked. Check connection/CSP.'; el.style.color = '#dc3545'; }
+      throw e;
+    }
     if (!teamsSnap.exists()) return null;
     const teams = teamsSnap.val() || [];
     // Clear existing options
